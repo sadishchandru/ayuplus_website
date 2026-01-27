@@ -23,7 +23,7 @@ const hedvigSerif = Hedvig_Letters_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ayurvedic Hospital Management System - Ayuplus",
+    default: "Ayuplus - Ayurvedic Hospital Management System",
     template: "%s | Ayuplus"
   },
   description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ayuplus.com",
-    title: "Ayurvedic Hospital Management System - Ayuplus",
+    url: "https://ayuplus.in",
+    title: "Ayuplus - Ayurvedic Hospital Management System",
     description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
     siteName: "Ayuplus",
     images: [
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ayurvedic Hospital Management System - Ayuplus",
+    title: "Ayuplus - Ayurvedic Hospital Management System",
     description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
     images: ["/images/leaf.svg"],
   },
