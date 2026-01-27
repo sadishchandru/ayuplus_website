@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Ayuplus",
     images: [
       {
-        url: "/images/og-image.jpg", // Assuming this will be added or exists, fallback is fine
+        url: "/images/leaf.svg",
         width: 1200,
         height: 630,
         alt: "Ayuplus Dashboard Preview",
@@ -62,7 +62,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ayurvedic Hospital Management System - Ayuplus",
     description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/leaf.svg"],
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 

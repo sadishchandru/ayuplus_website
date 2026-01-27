@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import FadeIn from './FadeIn';
+import Link from 'next/link';
 
 const Hero = () => {
     return (
@@ -35,9 +36,12 @@ const Hero = () => {
 
                     <FadeIn delay={600}>
                         <div className="mb-20">
-                            <button className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-center text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl">
+                            <Link
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSfuU2xfAl-tG8Y51UauZqYdeiE4wL_b1iH2g7EWRbawnhcx3A/viewform?pli=1"
+                                target='_blank'
+                                className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-center text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl">
                                 Request Hospital Demo
-                            </button>
+                            </Link>
                         </div>
                     </FadeIn>
 

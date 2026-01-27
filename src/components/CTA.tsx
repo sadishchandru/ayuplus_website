@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FadeIn from "./FadeIn";
 
 const CTA = () => {
@@ -15,9 +16,12 @@ const CTA = () => {
                     <p className="font-['Inter'] font-normal text-[18px] md:text-[24px] leading-[28px] md:leading-[39px] tracking-[0.07px] text-center text-white mb-[40px]">
                         See the complete Ayuplus platform in action with a personalized demo for your hospital.
                     </p>
-                    <button className="font-['Inter'] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-center text-[#008236] px-[20px] py-[12px] md:px-[35px] md:py-[24px] bg-white rounded-[8px] cursor-pointer hover:scale-105 transition-all duration-300 active:scale-95 shadow-lg hover:shadow-xl">
+                    <Link
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfuU2xfAl-tG8Y51UauZqYdeiE4wL_b1iH2g7EWRbawnhcx3A/viewform?pli=1"
+                        target='_blank'
+                        className="font-['Inter'] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-center text-[#008236] px-[20px] py-[12px] md:px-[35px] md:py-[24px] bg-white rounded-[8px] cursor-pointer hover:scale-105 transition-all duration-300 active:scale-95 shadow-lg hover:shadow-xl">
                         Request Hospital Demo
-                    </button>
+                    </Link>
                 </FadeIn>
             </div>
         </section>
