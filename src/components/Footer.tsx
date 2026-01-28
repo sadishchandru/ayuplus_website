@@ -64,7 +64,7 @@ const Footer = () => {
 
                         <div>
                             <div className="flex flex-col md:flex-col">
-                                <p className="font-['Inter'] font-normal text-[14px] leading-[20px] tracking-[-0.15px] text-[#99A1AF] mb-[15px] md:mb-0">© 2026 Gleaming Software. All rights reserved.</p>
+                                <p className="font-['Inter'] font-normal text-[14px] leading-[20px] tracking-[-0.15px] text-[#99A1AF] mb-[15px] md:mb-0">© 2026 <Link href="https://gleamingsoftware.com/" target='_blank' className="hover:text-primary transition-colors">Gleaming Software</Link>. All rights reserved.</p>
                                 <div className="flex space-x-[10px] font-['Inter'] font-normal text-[14px] leading-[22px] tracking-[-0.15px] text-[#99A1AF]">
                                     <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
                                     <span>|</span>

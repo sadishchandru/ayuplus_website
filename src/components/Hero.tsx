@@ -53,7 +53,7 @@ const Hero = () => {
                 <div className="w-full">
                     <FadeIn direction="up" delay={800}>
                         <Image
-                            src="/images/Dashboard1.png"
+                            src="/images/Dashboard_v1.png"
                             alt="Ayuplus Hospital Dashboard"
                             width={1450}
                             height={800}

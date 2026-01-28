@@ -22,6 +22,7 @@ const hedvigSerif = Hedvig_Letters_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ayuplus.in"),
   title: {
     default: "Ayuplus - Ayurvedic Hospital Management System",
     template: "%s | Ayuplus"
