@@ -52,10 +52,10 @@ export const metadata: Metadata = {
     siteName: "Ayuplus",
     images: [
       {
-        url: "/images/leaf.svg",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ayuplus Dashboard Preview",
+        alt: "Ayuplus - Ayurvedic Hospital Management System Dashboard",
       },
     ],
   },
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ayuplus - Ayurvedic Hospital Management System",
     description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
-    images: ["/images/leaf.svg"],
+    images: ["/images/og-image.jpg"],
   },
   icons: {
     icon: [
