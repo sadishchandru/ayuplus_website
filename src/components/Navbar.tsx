@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { useEffect, useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({ onOpenModal }: { onOpenModal?: () => void }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -29,13 +29,12 @@ const Navbar = () => {
 
         <div className="flex items-center space-x-4 md:space-x-8">
           <Link href="#" className="hidden text-[#0A0A0A] hover:text-primary transition-colors font-[500] text-[12px] md:text-[14px] hover:scale-105 duration-200">Login</Link>
-          <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfuU2xfAl-tG8Y51UauZqYdeiE4wL_b1iH2g7EWRbawnhcx3A/viewform?pli=1"
-            target='_blank'
+          <button
+            onClick={onOpenModal}
             className="px-[12px] py-[6px] md:px-[16px] md:py-[8px] rounded-md bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] text-white font-[500] text-[12px] md:text-[14px] transition-all duration-300 hover:bg-primary-hover hover:scale-105 active:scale-95 whitespace-nowrap shadow-md hover:shadow-lg"
           >
             Request Hospital Demo
-          </Link>
+          </button>
         </div>
       </div>
     </nav>

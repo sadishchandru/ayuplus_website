@@ -10,6 +10,7 @@ export const viewport: Viewport = {
 };
 import { Inter, Hedvig_Letters_Serif } from "next/font/google";
 import "./globals.css";
+import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -88,6 +89,7 @@ export default function RootLayout({
         className={`${inter.variable} ${hedvigSerif.variable} antialiased`}
       >
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
