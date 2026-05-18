@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 
 const FORM_TOKEN = "[SHOW_CONTACT_FORM]";
 
-function InlineContactForm({ onSubmitSuccess }) {
+function DemoBookingForm({ onSubmitSuccess }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -41,11 +41,19 @@ function InlineContactForm({ onSubmitSuccess }) {
     }
   }
 
-  if (done) return null;
+  if (done) {
+    return (
+      <div className="px-4 py-3 bg-[#f0fdf4] border-t border-[#00A63E]/20">
+        <p className="text-xs text-[#00A63E] font-semibold text-center">
+          Thank you! Our team will reach out within 24 hours.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="bg-white border border-[#00A63E]/30 rounded-xl p-3 mt-1 shadow-sm">
-      <p className="text-xs font-semibold text-[#00A63E] mb-2">Your details</p>
+    <div className="px-4 py-3 bg-[#f0fdf4] border-t border-[#00A63E]/20">
+      <p className="text-xs font-semibold text-[#00A63E] mb-2">Book a Demo — drop your details</p>
       <form onSubmit={handleSubmit} className="space-y-2">
         <input
           required
@@ -53,7 +61,7 @@ function InlineContactForm({ onSubmitSuccess }) {
           value={form.name}
           onChange={handleChange}
           placeholder="Your name"
-          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-2 outline-none focus:border-[#00A63E] transition-colors"
+          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:border-[#00A63E] transition-colors bg-white"
         />
         <input
           required
@@ -62,7 +70,7 @@ function InlineContactForm({ onSubmitSuccess }) {
           onChange={handleChange}
           placeholder="Email address"
           type="email"
-          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-2 outline-none focus:border-[#00A63E] transition-colors"
+          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:border-[#00A63E] transition-colors bg-white"
         />
         <input
           required
@@ -71,12 +79,12 @@ function InlineContactForm({ onSubmitSuccess }) {
           onChange={handleChange}
           placeholder="Mobile number"
           type="tel"
-          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-2 outline-none focus:border-[#00A63E] transition-colors"
+          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:border-[#00A63E] transition-colors bg-white"
         />
         <button
           type="submit"
           disabled={submitting}
-          className="w-full py-2 bg-[#00A63E] text-white text-xs font-semibold rounded-lg hover:bg-[#008236] transition-colors disabled:opacity-60"
+          className="w-full py-1.5 bg-[#00A63E] text-white text-xs font-semibold rounded-lg hover:bg-[#008236] transition-colors disabled:opacity-60"
         >
           {submitting ? "Submitting…" : "Request Demo →"}
         </button>
@@ -88,11 +96,11 @@ function InlineContactForm({ onSubmitSuccess }) {
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Namaste! I'm the Ayuplus assistant. How can I help your hospital today?" }
+    { role: "assistant", content: "Namaste! I'm Arjun from the Ayuplus team. How can I help your hospital today?" }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [formShown, setFormShown] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -109,7 +117,7 @@ export default function ChatWidget() {
     if (!text || loading) return;
 
     const userMsg = { role: "user", content: text };
-    const next = [...messages.filter((m) => m.role !== "form"), userMsg];
+    const next = [...messages, userMsg];
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setLoading(true);
@@ -126,16 +134,9 @@ export default function ChatWidget() {
       if (!res.ok) throw new Error("API error");
       const data = await res.json();
       const raw = data.reply ?? "Sorry, I couldn't get a response. Please try again.";
-
-      const hasForm = raw.includes(FORM_TOKEN);
       const cleanReply = raw.replace(FORM_TOKEN, "").trim();
 
-      const newMessages = [{ role: "assistant", content: cleanReply }];
-      if (hasForm && !formShown) {
-        newMessages.push({ role: "form", content: "" });
-        setFormShown(true);
-      }
-      setMessages((prev) => [...prev, ...newMessages]);
+      setMessages((prev) => [...prev, { role: "assistant", content: cleanReply }]);
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -147,11 +148,12 @@ export default function ChatWidget() {
   }
 
   function handleFormSuccess(name) {
+    setFormSubmitted(true);
     setMessages((prev) => [
-      ...prev.filter((m) => m.role !== "form"),
+      ...prev,
       {
         role: "assistant",
-        content: `Thank you, ${name}! 🙏 Our team will call you within 24 hours to schedule your demo. You can also reach us directly at contact@ayuplus.com or +91 98949 97482.`,
+        content: `Thank you, ${name}! Our team will call you within 24 hours to schedule your demo. You can also reach us at contact@ayuplus.com or +91 98949 97482.`,
       },
     ]);
   }
@@ -161,13 +163,13 @@ export default function ChatWidget() {
       {open && (
         <div
           className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
-          style={{ height: "480px" }}
+          style={{ height: "540px" }}
         >
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3 bg-[#00A63E] text-white">
+          <div className="flex items-center gap-3 px-4 py-3 bg-[#00A63E] text-white flex-shrink-0">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold">A</div>
             <div className="flex-1">
-              <p className="font-semibold text-sm leading-none">Ayuplus Assistant</p>
+              <p className="font-semibold text-sm leading-none">Arjun — Ayuplus Team</p>
               <p className="text-xs text-white/70 mt-0.5">Ask about features, pricing & more</p>
             </div>
             <button onClick={() => setOpen(false)} className="text-white/80 hover:text-white transition-colors">
@@ -179,28 +181,17 @@ export default function ChatWidget() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-            {messages.map((msg, i) => {
-              if (msg.role === "form") {
-                return (
-                  <div key={i} className="flex justify-start">
-                    <div className="w-full max-w-[90%]">
-                      <InlineContactForm onSubmitSuccess={handleFormSuccess} />
-                    </div>
-                  </div>
-                );
-              }
-              return (
-                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
-                    msg.role === "user"
-                      ? "bg-[#00A63E] text-white rounded-br-sm"
-                      : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
-                  }`}>
-                    {msg.content}
-                  </div>
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                  msg.role === "user"
+                    ? "bg-[#00A63E] text-white rounded-br-sm"
+                    : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
+                }`}>
+                  {msg.content}
                 </div>
-              );
-            })}
+              </div>
+            ))}
             {loading && (
               <div className="flex justify-start">
                 <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-sm px-3 py-2 shadow-sm">
@@ -215,8 +206,11 @@ export default function ChatWidget() {
             <div ref={bottomRef} />
           </div>
 
+          {/* Always-visible demo booking form */}
+          <DemoBookingForm onSubmitSuccess={handleFormSuccess} key={formSubmitted ? "done" : "active"} />
+
           {/* Input */}
-          <form onSubmit={sendMessage} className="px-3 py-3 bg-white border-t border-gray-100 flex gap-2">
+          <form onSubmit={sendMessage} className="px-3 py-3 bg-white border-t border-gray-100 flex gap-2 flex-shrink-0">
             <input
               ref={inputRef}
               value={input}
