@@ -121,12 +121,12 @@ function InlineContactForm({ onSubmitSuccess }) {
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState(() => [
-    { role: "assistant", content: `${getGreeting()}! I'm the AyuPlus AI assistant. How can I help you today?`, id: 0, animate: false },
-    { role: "form", content: "", id: 1 },
+    { role: "assistant", content: `${getGreeting()}! I'm AyuPlus. How can I help you today?`, id: 0, animate: false },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const msgIdRef = useRef(2);
+  const [showDemoForm, setShowDemoForm] = useState(false);
+  const msgIdRef = useRef(1);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -147,9 +147,8 @@ export default function ChatWidget() {
     if (!text || loading) return;
 
     const userMsg = { role: "user", content: text, id: nextId() };
-    const history = messages.filter((m) => m.role !== "form");
-    const next = [...history, userMsg];
-    setMessages([...history, userMsg]);
+    const next = [...messages, userMsg];
+    setMessages([...messages, userMsg]);
     setInput("");
     setLoading(true);
 
@@ -170,13 +169,11 @@ export default function ChatWidget() {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: cleanReply, id: nextId(), animate: true },
-        { role: "form", content: "", id: nextId() },
       ]);
     } catch {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "Something went wrong. Please try again or email us at contact@ayuplus.com or call +91 98949 97482.", id: nextId(), animate: true },
-        { role: "form", content: "", id: nextId() },
       ]);
     } finally {
       setLoading(false);
@@ -184,8 +181,9 @@ export default function ChatWidget() {
   }
 
   function handleFormSuccess(name) {
+    setShowDemoForm(false);
     setMessages((prev) => [
-      ...prev.filter((m) => m.role !== "form"),
+      ...prev,
       {
         role: "assistant",
         content: `Got it, ${name}! Someone from our team will call you within 24 hours to set up your demo. You can also reach us at contact@ayuplus.com or +91 98949 97482.`,
@@ -206,9 +204,18 @@ export default function ChatWidget() {
           <div className="flex items-center gap-3 px-4 py-3 bg-[#00A63E] text-white flex-shrink-0">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold">A</div>
             <div className="flex-1">
-              <p className="font-semibold text-sm leading-none">AyuPlus Assistant</p>
+              <p className="font-semibold text-sm leading-none">AyuPlus</p>
               <p className="text-xs text-white/70 mt-0.5">Ask about features, pricing & more</p>
             </div>
+            <button
+              onClick={() => setShowDemoForm((v) => !v)}
+              title="Book a Demo"
+              className="text-white/80 hover:text-white transition-colors mr-1"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </button>
             <button onClick={() => setOpen(false)} className="text-white/80 hover:text-white transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -218,31 +225,28 @@ export default function ChatWidget() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-            {messages.map((msg) => {
-              if (msg.role === "form") {
-                return (
-                  <div key={msg.id} className="flex justify-start">
-                    <div className="w-full max-w-[90%]">
-                      <InlineContactForm onSubmitSuccess={handleFormSuccess} />
-                    </div>
-                  </div>
-                );
-              }
-              return (
-                <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
-                    msg.role === "user"
-                      ? "bg-[#00A63E] text-white rounded-br-sm"
-                      : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
-                  }`}>
-                    {msg.role === "assistant"
-                      ? <TypingMessage content={msg.content} animate={msg.animate ?? false} />
-                      : msg.content
-                    }
-                  </div>
+            {messages.map((msg) => (
+              <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
+                  msg.role === "user"
+                    ? "bg-[#00A63E] text-white rounded-br-sm"
+                    : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
+                }`}>
+                  {msg.role === "assistant"
+                    ? <TypingMessage content={msg.content} animate={msg.animate ?? false} />
+                    : msg.content
+                  }
                 </div>
-              );
-            })}
+              </div>
+            ))}
+
+            {showDemoForm && (
+              <div className="flex justify-start">
+                <div className="w-full max-w-[90%]">
+                  <InlineContactForm onSubmitSuccess={handleFormSuccess} />
+                </div>
+              </div>
+            )}
 
             {/* Typing indicator while waiting */}
             {loading && (
