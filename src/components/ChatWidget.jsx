@@ -165,11 +165,11 @@ function InlineContactForm({ onSubmitSuccess }) {
 }
 
 const STORAGE_KEY = "ayuplus_chat_messages";
-const STATIC_INIT = [{ role: "assistant", content: "Hi! I'm AyuPlus. How can I help you today?", id: 0, animate: false }];
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState(STATIC_INIT);
+  const [messages, setMessages] = useState([]);
+  const [ready, setReady] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [showDemoForm, setShowDemoForm] = useState(false);
@@ -178,7 +178,7 @@ export default function ChatWidget() {
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Client-only: load saved messages, always apply fresh time-based greeting
+  // Single client-only init: greeting + localStorage restore
   useEffect(() => {
     const greetingText = `${getGreeting()}! I'm AyuPlus. How can I help you today?`;
     try {
@@ -190,18 +190,22 @@ export default function ChatWidget() {
           animate: false,
           ...(i === 0 && m.role === "assistant" ? { content: greetingText } : {}),
         }));
-        setMessages(restored);
         msgIdRef.current = Math.max(...restored.map((m) => m.id ?? 0), 0) + 1;
+        setMessages(restored);
+        setReady(true);
         return;
       }
     } catch {}
     setMessages([{ role: "assistant", content: greetingText, id: 0, animate: false }]);
+    setReady(true);
   }, []);
 
+  // Save only after init is complete (guard prevents saving empty [] on first render)
   useEffect(() => {
+    if (!ready) return;
     messagesRef.current = messages;
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(messages)); } catch {}
-  }, [messages]);
+  }, [messages, ready]);
 
   useEffect(() => {
     if (open) {
@@ -307,7 +311,7 @@ export default function ChatWidget() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-            {messages.map((msg, idx) => (
+            {ready && messages.map((msg, idx) => (
               <div key={msg.id}>
                 <div className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
