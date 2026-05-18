@@ -53,7 +53,7 @@ const PAIN_POINTS = [
 export function PainPointsSection() {
   return (
     <div className="w-full flex justify-center bg-[#FAFAFA]">
-      <div className="container-1280 flex flex-col lg:flex-row items-center gap-8 md:gap-12 py-[40px] md:py-[70px]">
+      <div className="container-1280 flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 py-[40px] md:py-[70px]">
 
         {/* Left: text + checklist */}
         <div className="flex-1 max-w-xl">
@@ -105,7 +105,7 @@ export function PainPointsSection() {
               ))}
             </div>
           </div>
-          <div className="absolute -inset-4 -z-10 bg-primary/5 blur-3xl rounded-full opacity-60 right-auto left-0" />
+          <div className="absolute -inset-4 -z-10 bg-primary/5 blur-3xl rounded-full opacity-60 left-auto right-0" />
         </div>
 
       </div>
