@@ -33,22 +33,18 @@ export function SocialProofBar() {
 
 const PAIN_POINTS = [
   {
-    emoji: "📋",
     title: "Paper-based Panchakarma records",
     description: "Day-wise dosage tracked on paper — lost, illegible, and impossible to audit or reference at follow-up.",
   },
   {
-    emoji: "🔗",
     title: "No unified patient journey",
     description: "OPD, pharmacy, and billing operate in silos. Staff re-enter the same data across three different registers.",
   },
   {
-    emoji: "🌿",
     title: "Prakruti lost in notes",
     description: "Dosha assessments recorded once and never seen again — never accessible at follow-up when it matters most.",
   },
   {
-    emoji: "💸",
     title: "Unbilled procedures = revenue leakage",
     description: "Treatment sessions happen without invoices being raised. Thousands lost every month to manual billing gaps.",
   },
@@ -56,31 +52,64 @@ const PAIN_POINTS = [
 
 export function PainPointsSection() {
   return (
-    <section className="w-full flex justify-center bg-[#FAFAFA] py-[50px] md:py-[80px]">
-      <div className="container-1280 w-full">
-        <div className="text-center mb-10 md:mb-14">
-          <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#00A63E] uppercase tracking-widest mb-3">
-            The Problem
-          </span>
-          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-[#101828]">
+    <div className="w-full flex justify-center bg-[#FAFAFA]">
+      <div className="container-1280 flex flex-col lg:flex-row items-center gap-8 md:gap-12 py-[40px] md:py-[70px]">
+
+        {/* Left: text + checklist */}
+        <div className="flex-1 max-w-xl">
+          <h3 className="font-['Inter'] font-bold text-[24px] md:text-[38px] leading-[30px] md:leading-[48px] tracking-[0.35px] text-[#101828] mb-[16px] md:mb-[24px] mt-0 md:mt-[-25px]">
             Generic HMS software wasn't built for Ayurveda
-          </h2>
+          </h3>
+          <p className="font-['Inter'] font-normal text-[16px] md:text-[18px] leading-[24px] md:leading-[32.5px] tracking-[-0.45px] text-[#4A5565] mb-[24px]">
+            Most hospital software is adapted from generic tools. Ayuplus was built ground-up for Ayurvedic workflows — the problems below are exactly what it was designed to eliminate.
+          </p>
+          <ul className="space-y-6">
+            {PAIN_POINTS.map(({ title, description }) => (
+              <li key={title} className="flex items-start group">
+                <div className="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#00A63E] flex items-center justify-center mr-[12px] border border-[#00A63E] mt-1">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="font-['Inter'] font-semibold text-[18px] leading-[28px] tracking-[-0.44px] text-[#101828]">
+                    {title}
+                  </span>
+                  <p className="font-['Inter'] font-normal text-[16px] leading-[24px] tracking-[-0.31px] text-[#4A5565]">
+                    {description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {PAIN_POINTS.map(({ emoji, title, description }) => (
-            <div
-              key={title}
-              className="bg-white rounded-2xl border-t-2 border-t-[#00A63E] border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
-            >
-              <div className="text-[28px] mb-3">{emoji}</div>
-              <h3 className="font-['Inter'] font-semibold text-[16px] text-[#101828] mb-2">{title}</h3>
-              <p className="font-['Inter'] text-[14px] leading-[22px] text-[#4A5565]">{description}</p>
+        {/* Right: stat card */}
+        <div className="flex-1 w-full relative">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 md:p-10 space-y-6">
+            <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] uppercase tracking-widest">The Problem</p>
+            <p className="font-['Hedvig_Letters_Serif'] font-normal text-[22px] md:text-[28px] leading-[32px] md:leading-[38px] text-[#101828]">
+              Ayurvedic hospitals lose time and revenue every day to software that doesn't understand their workflows.
+            </p>
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              {[
+                { value: "~35%", label: "Admin time saved" },
+                { value: "7", label: "Panchakarma forms" },
+                { value: "13", label: "Integrated modules" },
+                { value: "36+", label: "Clinical screens" },
+              ].map(({ value, label }) => (
+                <div key={label} className="bg-[#f0faf4] rounded-xl p-4">
+                  <p className="font-['Inter'] font-bold text-[26px] text-[#00A63E] leading-none mb-1">{value}</p>
+                  <p className="font-['Inter'] text-[12px] text-[#4A5565]">{label}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="absolute -inset-4 -z-10 bg-primary/5 blur-3xl rounded-full opacity-60 right-auto left-0" />
         </div>
+
       </div>
-    </section>
+    </div>
   );
 }
 
