@@ -199,6 +199,17 @@ export function LeadSection({ onOpenModal }) {
   return (
     <section className="w-full flex justify-center py-[50px] md:py-[80px]" style={{ background: "linear-gradient(135deg, #003d1a 0%, #005c28 100%)" }}>
       <div className="container-1280 w-full">
+
+        {/* Top: merged CTA heading */}
+        <div className="text-center mb-[48px] md:mb-[64px]">
+          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-white mb-[16px]">
+            Start digitizing your hospital today
+          </h2>
+          <p className="font-['Inter'] font-normal text-[16px] md:text-[20px] leading-[28px] md:leading-[36px] tracking-[0.07px] text-[#bbf7d0] max-w-2xl mx-auto">
+            See the complete Ayuplus platform in action with a personalised demo for your hospital.
+          </p>
+        </div>
+
         <div className="flex flex-col md:flex-row gap-12 items-start">
 
           {/* Left: perks */}
@@ -206,9 +217,9 @@ export function LeadSection({ onOpenModal }) {
             <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#86efac] uppercase tracking-widest mb-4">
               Book a Demo
             </span>
-            <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-white mb-4">
+            <h3 className="font-['Hedvig_Letters_Serif'] font-normal text-[24px] md:text-[36px] leading-[32px] md:leading-[46px] tracking-[0.12px] text-white mb-4">
               See Ayuplus in action at your hospital
-            </h2>
+            </h3>
             <p className="font-['Inter'] text-[16px] text-[#bbf7d0] mb-10 max-w-md">
               A live demo, configured for your workflows — not a generic product tour.
             </p>
@@ -270,6 +281,7 @@ export function LeadSection({ onOpenModal }) {
           </div>
 
         </div>
+
       </div>
     </section>
   );

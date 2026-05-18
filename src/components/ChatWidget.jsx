@@ -4,6 +4,39 @@ import { useState, useRef, useEffect } from "react";
 
 const FORM_TOKEN = "[SHOW_CONTACT_FORM]";
 
+function getGreeting() {
+  const h = new Date().getHours();
+  if (h >= 5 && h < 12) return "Good Morning";
+  if (h >= 12 && h < 17) return "Good Afternoon";
+  if (h >= 17 && h < 21) return "Good Evening";
+  return "Good Night";
+}
+
+// Typewriter animation for assistant messages
+function TypingMessage({ content, animate }) {
+  const [displayed, setDisplayed] = useState(animate ? "" : content);
+
+  useEffect(() => {
+    if (!animate) return;
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setDisplayed(content.slice(0, i));
+      if (i >= content.length) clearInterval(interval);
+    }, 16);
+    return () => clearInterval(interval);
+  }, [content, animate]);
+
+  return (
+    <span className="whitespace-pre-wrap">
+      {displayed}
+      {animate && displayed.length < content.length && (
+        <span className="inline-block w-[2px] h-[14px] bg-gray-400 ml-[1px] animate-pulse align-middle" />
+      )}
+    </span>
+  );
+}
+
 function InlineContactForm({ onSubmitSuccess }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -87,29 +120,33 @@ function InlineContactForm({ onSubmitSuccess }) {
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: "assistant", content: "Namaste! I'm Arjun from the Ayuplus team. How can I help your hospital today?" },
-    { role: "form", content: "" },
+  const [messages, setMessages] = useState(() => [
+    { role: "assistant", content: `${getGreeting()}! I'm the AyuPlus AI assistant. How can I help you today?`, id: 0, animate: false },
+    { role: "form", content: "", id: 1 },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const msgIdRef = useRef(2);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
     if (open) {
-      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 50);
       inputRef.current?.focus();
     }
   }, [open, messages]);
+
+  function nextId() {
+    return msgIdRef.current++;
+  }
 
   async function sendMessage(e) {
     e.preventDefault();
     const text = input.trim();
     if (!text || loading) return;
 
-    const userMsg = { role: "user", content: text };
-    // Strip any existing form before sending
+    const userMsg = { role: "user", content: text, id: nextId() };
     const history = messages.filter((m) => m.role !== "form");
     const next = [...history, userMsg];
     setMessages([...history, userMsg]);
@@ -130,17 +167,16 @@ export default function ChatWidget() {
       const raw = data.reply ?? "Sorry, I couldn't get a response. Please try again.";
       const cleanReply = raw.replace(FORM_TOKEN, "").trim();
 
-      // Always append the form after the assistant reply
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: cleanReply },
-        { role: "form", content: "" },
+        { role: "assistant", content: cleanReply, id: nextId(), animate: true },
+        { role: "form", content: "", id: nextId() },
       ]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Something went wrong. Please try again or email us at contact@ayuplus.com or call +91 98949 97482." },
-        { role: "form", content: "" },
+        { role: "assistant", content: "Something went wrong. Please try again or email us at contact@ayuplus.com or call +91 98949 97482.", id: nextId(), animate: true },
+        { role: "form", content: "", id: nextId() },
       ]);
     } finally {
       setLoading(false);
@@ -152,7 +188,9 @@ export default function ChatWidget() {
       ...prev.filter((m) => m.role !== "form"),
       {
         role: "assistant",
-        content: `Thank you, ${name}! Our team will call you within 24 hours to schedule your demo. You can also reach us at contact@ayuplus.com or +91 98949 97482.`,
+        content: `Got it, ${name}! Someone from our team will call you within 24 hours to set up your demo. You can also reach us at contact@ayuplus.com or +91 98949 97482.`,
+        id: nextId(),
+        animate: true,
       },
     ]);
   }
@@ -168,7 +206,7 @@ export default function ChatWidget() {
           <div className="flex items-center gap-3 px-4 py-3 bg-[#00A63E] text-white flex-shrink-0">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold">A</div>
             <div className="flex-1">
-              <p className="font-semibold text-sm leading-none">Arjun — Ayuplus Team</p>
+              <p className="font-semibold text-sm leading-none">AyuPlus Assistant</p>
               <p className="text-xs text-white/70 mt-0.5">Ask about features, pricing & more</p>
             </div>
             <button onClick={() => setOpen(false)} className="text-white/80 hover:text-white transition-colors">
@@ -180,10 +218,10 @@ export default function ChatWidget() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-            {messages.map((msg, i) => {
+            {messages.map((msg) => {
               if (msg.role === "form") {
                 return (
-                  <div key={i} className="flex justify-start">
+                  <div key={msg.id} className="flex justify-start">
                     <div className="w-full max-w-[90%]">
                       <InlineContactForm onSubmitSuccess={handleFormSuccess} />
                     </div>
@@ -191,24 +229,29 @@ export default function ChatWidget() {
                 );
               }
               return (
-                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
                     msg.role === "user"
                       ? "bg-[#00A63E] text-white rounded-br-sm"
                       : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
                   }`}>
-                    {msg.content}
+                    {msg.role === "assistant"
+                      ? <TypingMessage content={msg.content} animate={msg.animate ?? false} />
+                      : msg.content
+                    }
                   </div>
                 </div>
               );
             })}
+
+            {/* Typing indicator while waiting */}
             {loading && (
               <div className="flex justify-start">
-                <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-sm px-3 py-2 shadow-sm">
-                  <span className="flex gap-1">
-                    <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm">
+                  <span className="flex gap-1 items-center">
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
                   </span>
                 </div>
               </div>
@@ -222,7 +265,7 @@ export default function ChatWidget() {
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about Ayuplus…"
+              placeholder="Type a message…"
               className="flex-1 text-sm border border-gray-200 rounded-xl px-3 py-2 outline-none focus:border-[#00A63E] transition-colors"
               disabled={loading}
             />

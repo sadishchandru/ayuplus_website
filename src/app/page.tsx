@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import VaidyaMode from "@/components/VaidyaMode";
 import Features from "@/components/Features";
-import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import DemoModal from "@/components/DemoModal";
 import { SocialProofBar, PainPointsSection, TestimonialsSection, LeadSection } from "@/sections/LeadSections";
@@ -24,8 +23,7 @@ export default function Home() {
       <VaidyaMode />
       <Features />
       <PainPointsSection />
-      <CTA onOpenModal={openModal} />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <LeadSection onOpenModal={openModal} />
       <Footer />
       <DemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
