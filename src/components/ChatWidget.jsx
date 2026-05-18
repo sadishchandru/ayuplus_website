@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 
 const FORM_TOKEN = "[SHOW_CONTACT_FORM]";
 
-function DemoBookingForm({ onSubmitSuccess }) {
+function InlineContactForm({ onSubmitSuccess }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -41,18 +41,10 @@ function DemoBookingForm({ onSubmitSuccess }) {
     }
   }
 
-  if (done) {
-    return (
-      <div className="px-4 py-3 bg-[#f0fdf4] border-t border-[#00A63E]/20">
-        <p className="text-xs text-[#00A63E] font-semibold text-center">
-          Thank you! Our team will reach out within 24 hours.
-        </p>
-      </div>
-    );
-  }
+  if (done) return null;
 
   return (
-    <div className="px-4 py-3 bg-[#f0fdf4] border-t border-[#00A63E]/20">
+    <div className="bg-white border border-[#00A63E]/30 rounded-xl p-3 mt-1 shadow-sm">
       <p className="text-xs font-semibold text-[#00A63E] mb-2">Book a Demo — drop your details</p>
       <form onSubmit={handleSubmit} className="space-y-2">
         <input
@@ -61,7 +53,7 @@ function DemoBookingForm({ onSubmitSuccess }) {
           value={form.name}
           onChange={handleChange}
           placeholder="Your name"
-          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:border-[#00A63E] transition-colors bg-white"
+          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-2 outline-none focus:border-[#00A63E] transition-colors"
         />
         <input
           required
@@ -70,7 +62,7 @@ function DemoBookingForm({ onSubmitSuccess }) {
           onChange={handleChange}
           placeholder="Email address"
           type="email"
-          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:border-[#00A63E] transition-colors bg-white"
+          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-2 outline-none focus:border-[#00A63E] transition-colors"
         />
         <input
           required
@@ -79,12 +71,12 @@ function DemoBookingForm({ onSubmitSuccess }) {
           onChange={handleChange}
           placeholder="Mobile number"
           type="tel"
-          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:border-[#00A63E] transition-colors bg-white"
+          className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-2 outline-none focus:border-[#00A63E] transition-colors"
         />
         <button
           type="submit"
           disabled={submitting}
-          className="w-full py-1.5 bg-[#00A63E] text-white text-xs font-semibold rounded-lg hover:bg-[#008236] transition-colors disabled:opacity-60"
+          className="w-full py-2 bg-[#00A63E] text-white text-xs font-semibold rounded-lg hover:bg-[#008236] transition-colors disabled:opacity-60"
         >
           {submitting ? "Submitting…" : "Request Demo →"}
         </button>
@@ -96,11 +88,11 @@ function DemoBookingForm({ onSubmitSuccess }) {
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Namaste! I'm Arjun from the Ayuplus team. How can I help your hospital today?" }
+    { role: "assistant", content: "Namaste! I'm Arjun from the Ayuplus team. How can I help your hospital today?" },
+    { role: "form", content: "" },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -117,8 +109,10 @@ export default function ChatWidget() {
     if (!text || loading) return;
 
     const userMsg = { role: "user", content: text };
-    const next = [...messages, userMsg];
-    setMessages((prev) => [...prev, userMsg]);
+    // Strip any existing form before sending
+    const history = messages.filter((m) => m.role !== "form");
+    const next = [...history, userMsg];
+    setMessages([...history, userMsg]);
     setInput("");
     setLoading(true);
 
@@ -136,11 +130,17 @@ export default function ChatWidget() {
       const raw = data.reply ?? "Sorry, I couldn't get a response. Please try again.";
       const cleanReply = raw.replace(FORM_TOKEN, "").trim();
 
-      setMessages((prev) => [...prev, { role: "assistant", content: cleanReply }]);
+      // Always append the form after the assistant reply
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: cleanReply },
+        { role: "form", content: "" },
+      ]);
     } catch {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "Something went wrong. Please try again or email us at contact@ayuplus.com or call +91 98949 97482." },
+        { role: "form", content: "" },
       ]);
     } finally {
       setLoading(false);
@@ -148,9 +148,8 @@ export default function ChatWidget() {
   }
 
   function handleFormSuccess(name) {
-    setFormSubmitted(true);
     setMessages((prev) => [
-      ...prev,
+      ...prev.filter((m) => m.role !== "form"),
       {
         role: "assistant",
         content: `Thank you, ${name}! Our team will call you within 24 hours to schedule your demo. You can also reach us at contact@ayuplus.com or +91 98949 97482.`,
@@ -163,7 +162,7 @@ export default function ChatWidget() {
       {open && (
         <div
           className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
-          style={{ height: "540px" }}
+          style={{ height: "520px" }}
         >
           {/* Header */}
           <div className="flex items-center gap-3 px-4 py-3 bg-[#00A63E] text-white flex-shrink-0">
@@ -181,17 +180,28 @@ export default function ChatWidget() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-            {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
-                  msg.role === "user"
-                    ? "bg-[#00A63E] text-white rounded-br-sm"
-                    : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
-                }`}>
-                  {msg.content}
+            {messages.map((msg, i) => {
+              if (msg.role === "form") {
+                return (
+                  <div key={i} className="flex justify-start">
+                    <div className="w-full max-w-[90%]">
+                      <InlineContactForm onSubmitSuccess={handleFormSuccess} />
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                    msg.role === "user"
+                      ? "bg-[#00A63E] text-white rounded-br-sm"
+                      : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
+                  }`}>
+                    {msg.content}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
             {loading && (
               <div className="flex justify-start">
                 <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-sm px-3 py-2 shadow-sm">
@@ -205,9 +215,6 @@ export default function ChatWidget() {
             )}
             <div ref={bottomRef} />
           </div>
-
-          {/* Always-visible demo booking form */}
-          <DemoBookingForm onSubmitSuccess={handleFormSuccess} key={formSubmitted ? "done" : "active"} />
 
           {/* Input */}
           <form onSubmit={sendMessage} className="px-3 py-3 bg-white border-t border-gray-100 flex gap-2 flex-shrink-0">
