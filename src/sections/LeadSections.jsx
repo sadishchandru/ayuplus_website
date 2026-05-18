@@ -62,7 +62,7 @@ export function PainPointsSection() {
           <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#00A63E] uppercase tracking-widest mb-3">
             The Problem
           </span>
-          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[24px] md:text-[42px] leading-[32px] md:leading-[54px] tracking-[0.12px] text-[#101828]">
+          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-[#101828]">
             Generic HMS software wasn't built for Ayurveda
           </h2>
         </div>
@@ -118,7 +118,7 @@ export function TestimonialsSection() {
           <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#00A63E] uppercase tracking-widest mb-3">
             What Clinics Say
           </span>
-          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[24px] md:text-[42px] leading-[32px] md:leading-[54px] tracking-[0.12px] text-[#101828]">
+          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-[#101828]">
             Loved by Vaidyas &amp; Administrators
           </h2>
         </div>
@@ -177,7 +177,7 @@ export function LeadSection({ onOpenModal }) {
             <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#86efac] uppercase tracking-widest mb-4">
               Book a Demo
             </span>
-            <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[44px] leading-[36px] md:leading-[54px] text-white mb-4">
+            <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-white mb-4">
               See Ayuplus in action at your hospital
             </h2>
             <p className="font-['Inter'] text-[16px] text-[#bbf7d0] mb-10 max-w-md">

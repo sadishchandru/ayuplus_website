@@ -10,7 +10,7 @@ const CTA = ({ onOpenModal }: { onOpenModal?: () => void }) => {
 
             <div className="container-1280 w-full text-center relative z-10 text-white">
                 <FadeIn>
-                    <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[60px] leading-[36px] md:leading-[75px] tracking-[0.26px] text-center text-white mb-[24px]">
+                    <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-center text-white mb-[24px]">
                         Start digitizing your <br className="hidden md:block" /> hospital today
                     </h2>
                     <p className="font-['Inter'] font-normal text-[18px] md:text-[24px] leading-[28px] md:leading-[39px] tracking-[0.07px] text-center text-white mb-[40px]">
