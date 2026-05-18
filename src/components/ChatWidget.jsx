@@ -4,6 +4,52 @@ import { useState, useRef, useEffect } from "react";
 
 const FORM_TOKEN = "[SHOW_CONTACT_FORM]";
 
+const STARTER_CHIPS = [
+  "What modules does AyuPlus include?",
+  "How does the Panchakarma module work?",
+  "Can I manage billing and pharmacy?",
+  "What languages does AyuPlus support?",
+  "How does patient registration work?",
+  "What is Prakruti assessment?",
+];
+
+const FOLLOW_UPS = [
+  { keys: ["panchakarma", "snehapanam", "vasthi", "vamanam", "virechanam", "bahya"], chips: ["What 7 Panchakarma procedures are covered?", "How is daily Snehapanam dosage recorded?", "Can Panchakarma records be printed?"] },
+  { keys: ["billing", "invoice", "payment", "gst", "advance"], chips: ["What payment methods are supported?", "How does pharmacy billing work?", "Can I collect advance payments?"] },
+  { keys: ["pharmacy", "medicine", "stock", "drug", "catalog", "dispensing"], chips: ["How does stock management work?", "Is there a medicine audit trail?", "How does pharmacy billing work?"] },
+  { keys: ["patient", "registration", "opd", "opno", "visit", "consent"], chips: ["How are repeat visits handled?", "Is inpatient registration supported?", "How does OPD consultation work?"] },
+  { keys: ["prakruti", "dosha", "vata", "pitta", "kapha", "constitution"], chips: ["How are Vata/Pitta/Kapha scores calculated?", "Can I print the Prakruti profile?", "What sections does the assessment cover?"] },
+  { keys: ["therapist", "treatment", "abhyanga", "shirodhara", "schedule", "session"], chips: ["What does the therapist daily queue show?", "How is treatment progress tracked?", "Can therapists view patient history?"] },
+  { keys: ["appointment", "doctor", "slot", "booking", "shift"], chips: ["How does appointment booking work?", "How are shift breaks handled?", "What info is in a doctor profile?"] },
+  { keys: ["discharge", "inpatient", "bed", "admit", "ipo", "ipno"], chips: ["How does bed management work?", "What's included in the discharge summary?", "How are discharge conditions recorded?"] },
+  { keys: ["report", "excel", "export", "analytics", "revenue"], chips: ["What reports are available?", "Can reports be exported to Excel?", "What does the procedure billing report show?"] },
+  { keys: ["module", "feature", "include", "support", "language", "hindi", "tamil"], chips: ["How does Panchakarma tracking work?", "Tell me about the pharmacy module", "How does billing work?"] },
+];
+
+function getContextChips(messages) {
+  const userMsgs = messages.filter((m) => m.role === "user");
+  const asked = new Set(userMsgs.map((m) => m.content.trim()));
+
+  function notAsked(chips) {
+    return chips.filter((q) => !asked.has(q));
+  }
+
+  if (userMsgs.length === 0) return STARTER_CHIPS;
+
+  const lastText = userMsgs[userMsgs.length - 1].content.toLowerCase();
+  for (const { keys, chips } of FOLLOW_UPS) {
+    if (keys.some((k) => lastText.includes(k))) {
+      const fresh = notAsked(chips);
+      if (fresh.length) return fresh.slice(0, 3);
+      break;
+    }
+  }
+
+  // Fall back to unasked starter chips
+  const remaining = notAsked(STARTER_CHIPS);
+  return remaining.length ? remaining.slice(0, 4) : [];
+}
+
 function getGreeting() {
   const h = new Date().getHours();
   if (h >= 5 && h < 12) return "Good Morning";
@@ -118,21 +164,48 @@ function InlineContactForm({ onSubmitSuccess }) {
   );
 }
 
+const STORAGE_KEY = "ayuplus_chat_messages";
+const STATIC_INIT = [{ role: "assistant", content: "Hi! I'm AyuPlus. How can I help you today?", id: 0, animate: false }];
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState(() => [
-    { role: "assistant", content: `${getGreeting()}! I'm AyuPlus. How can I help you today?`, id: 0, animate: false },
-  ]);
+  const [messages, setMessages] = useState(STATIC_INIT);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [showDemoForm, setShowDemoForm] = useState(false);
   const msgIdRef = useRef(1);
+  const messagesRef = useRef(messages);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
+  // Client-only: load saved messages, always apply fresh time-based greeting
+  useEffect(() => {
+    const greetingText = `${getGreeting()}! I'm AyuPlus. How can I help you today?`;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const restored = parsed.map((m, i) => ({
+          ...m,
+          animate: false,
+          ...(i === 0 && m.role === "assistant" ? { content: greetingText } : {}),
+        }));
+        setMessages(restored);
+        msgIdRef.current = Math.max(...restored.map((m) => m.id ?? 0), 0) + 1;
+        return;
+      }
+    } catch {}
+    setMessages([{ role: "assistant", content: greetingText, id: 0, animate: false }]);
+  }, []);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(messages)); } catch {}
+  }, [messages]);
+
   useEffect(() => {
     if (open) {
-      setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 50);
+      setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "instant" }), 30);
       inputRef.current?.focus();
     }
   }, [open, messages]);
@@ -141,15 +214,25 @@ export default function ChatWidget() {
     return msgIdRef.current++;
   }
 
+  async function sendQuick(text) {
+    if (loading) return;
+    setInput("");
+    await dispatchMessage(text);
+  }
+
   async function sendMessage(e) {
     e.preventDefault();
     const text = input.trim();
     if (!text || loading) return;
-
-    const userMsg = { role: "user", content: text, id: nextId() };
-    const next = [...messages, userMsg];
-    setMessages([...messages, userMsg]);
     setInput("");
+    await dispatchMessage(text);
+  }
+
+  async function dispatchMessage(text) {
+    const current = messagesRef.current;
+    const userMsg = { role: "user", content: text, id: nextId() };
+    const next = [...current, userMsg];
+    setMessages(next);
     setLoading(true);
 
     try {
@@ -195,11 +278,10 @@ export default function ChatWidget() {
 
   return (
     <>
-      {open && (
-        <div
-          className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
-          style={{ height: "520px" }}
-        >
+      <div
+        className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
+        style={{ height: "520px", display: open ? "flex" : "none" }}
+      >
           {/* Header */}
           <div className="flex items-center gap-3 px-4 py-3 bg-[#00A63E] text-white flex-shrink-0">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold">A</div>
@@ -210,7 +292,7 @@ export default function ChatWidget() {
             <button
               onClick={() => setShowDemoForm((v) => !v)}
               title="Book a Demo"
-              className="text-white/80 hover:text-white transition-colors mr-1"
+              className="text-white/80 hover:text-white transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -225,18 +307,51 @@ export default function ChatWidget() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-            {messages.map((msg) => (
-              <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
-                  msg.role === "user"
-                    ? "bg-[#00A63E] text-white rounded-br-sm"
-                    : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
-                }`}>
-                  {msg.role === "assistant"
-                    ? <TypingMessage content={msg.content} animate={msg.animate ?? false} />
-                    : msg.content
-                  }
+            {messages.map((msg, idx) => (
+              <div key={msg.id}>
+                <div className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
+                    msg.role === "user"
+                      ? "bg-[#00A63E] text-white rounded-br-sm"
+                      : "bg-white text-gray-800 border border-gray-200 rounded-bl-sm shadow-sm"
+                  }`}>
+                    {msg.role === "assistant"
+                      ? <TypingMessage content={msg.content} animate={msg.animate ?? false} />
+                      : msg.content
+                    }
+                  </div>
                 </div>
+
+                {/* Context-aware chips after every last assistant reply */}
+                {msg.role === "assistant" && idx === messages.length - 1 && !loading && (
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {getContextChips(messages).map((q) => (
+                      <button
+                        key={q}
+                        onClick={() => sendQuick(q)}
+                        disabled={loading}
+                        className="text-xs px-2.5 py-1.5 rounded-full border border-[#00A63E]/40 text-[#00A63E] bg-white hover:bg-[#f0faf4] transition-colors disabled:opacity-50 text-left"
+                      >
+                        {q}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Book a Demo prompt — after every assistant reply (except greeting) */}
+                {msg.role === "assistant" && idx > 0 && idx === messages.length - 1 && !loading && (
+                  <div className="flex justify-start mt-1.5">
+                    <button
+                      onClick={() => setShowDemoForm((v) => !v)}
+                      className="flex items-center gap-1.5 text-xs text-[#00A63E] border border-[#00A63E]/30 bg-white rounded-full px-3 py-1.5 hover:bg-[#f0faf4] transition-colors"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      Book a Demo
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
 
@@ -284,7 +399,6 @@ export default function ChatWidget() {
             </button>
           </form>
         </div>
-      )}
 
       {/* Bubble button */}
       <button
