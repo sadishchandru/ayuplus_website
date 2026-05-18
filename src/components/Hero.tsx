@@ -17,7 +17,7 @@ const Hero = ({ onOpenModal }: { onOpenModal?: () => void }) => {
                                 alt="Leaf"
                                 width={55}
                                 height={25}
-                                className="h-auto"
+                                style={{ width: "auto", height: "auto" }}
                             />
                         </FadeIn>
                     </div>
@@ -56,7 +56,8 @@ const Hero = ({ onOpenModal }: { onOpenModal?: () => void }) => {
                             alt="Ayuplus Hospital Dashboard"
                             width={1450}
                             height={800}
-                            className="rounded-xl h-auto mx-auto"
+                            className="rounded-xl mx-auto"
+                            style={{ height: "auto" }}
                             priority
                         />
                     </FadeIn>

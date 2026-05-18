@@ -22,7 +22,8 @@ const Navbar = ({ onOpenModal }: { onOpenModal?: () => void }) => {
               alt="Logo"
               width={123}
               height={42}
-              className="rounded-xl w-[90px] md:w-full h-auto"
+              className="rounded-xl w-[90px] md:w-full"
+              style={{ height: "auto" }}
             />
           </Link>
         </div>
