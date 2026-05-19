@@ -11,6 +11,7 @@ export const viewport: Viewport = {
 import { Inter, Hedvig_Letters_Serif } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "@/components/ChatWidget";
+import StructuredData from "./structured-data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,16 +24,54 @@ const hedvigSerif = Hedvig_Letters_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ayuplus.in"),
+  metadataBase: new URL("https://www.ayuplus.in"),
   title: {
-    default: "Ayuplus - Ayurvedic Hospital Management System",
-    template: "%s | Ayuplus"
+    default: "AyuPlus – Ayurvedic Hospital Management System | HMS Software India",
+    template: "%s | AyuPlus HMS",
   },
-  description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
-  keywords: ["Ayurveda", "Hospital Management System", "Ayurvedic Software", "HMS", "OPD", "IPD", "Panchakarma", "Medical Software"],
-  authors: [{ name: "Gleaming Software" }],
+  description:
+    "AyuPlus is India’s purpose-built Ayurvedic Hospital Management System. Manage OPD, IPD, Panchakarma, Pharmacy, Billing & Prakruti assessment in one platform. Trusted by Ayurvedic hospitals across Kerala, Karnataka, Tamil Nadu.",
+  keywords: [
+    "Ayurvedic hospital management system",
+    "Ayurveda HMS software India",
+    "Panchakarma management software",
+    "Ayurvedic clinic software",
+    "OPD IPD management Ayurveda",
+    "Prakruti assessment software",
+    "hospital billing software Ayurveda",
+    "Kerala Ayurveda hospital software",
+    "Panchakarma tracking system",
+    "Vaidya consultation software",
+    "Ayurvedic EMR software",
+    "dosha assessment software",
+    "Gleaming Software AyuPlus",
+  ],
+  authors: [{ name: "Gleaming Software", url: "https://gleamingsoftware.com" }],
   creator: "Gleaming Software",
-  publisher: "Gleaming Software",
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://www.ayuplus.in",
+    siteName: "AyuPlus HMS",
+    title: "AyuPlus – Ayurvedic Hospital Management System",
+    description:
+      "Purpose-built HMS for Ayurvedic hospitals. OPD, IPD, Panchakarma, Pharmacy, Billing & Prakruti — all in one platform.",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AyuPlus Ayurvedic Hospital Management System Dashboard",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AyuPlus – Ayurvedic Hospital Management System",
+    description:
+      "Purpose-built HMS for Ayurvedic hospitals. OPD, IPD, Panchakarma, Pharmacy, Billing & Prakruti — all in one platform.",
+    images: ["/images/og-image.jpg"],
+  },
   robots: {
     index: true,
     follow: true,
@@ -44,27 +83,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://ayuplus.in",
-    title: "Ayuplus - Ayurvedic Hospital Management System",
-    description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
-    siteName: "Ayuplus",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Ayuplus - Ayurvedic Hospital Management System Dashboard",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ayuplus - Ayurvedic Hospital Management System",
-    description: "Complete Ayurvedic Hospital Management System (HMS) featuring specialized modules for Panchakarma, Tithi calendars, IPD/OPD, and pharmacy billing. Scale your institution with Ayuplus’s professional, secure, and data-driven SaaS platform.",
-    images: ["/images/og-image.jpg"],
+  alternates: {
+    canonical: "https://www.ayuplus.in",
   },
   icons: {
     icon: [
@@ -85,6 +105,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <StructuredData />
+      </head>
       <body
         className={`${inter.variable} ${hedvigSerif.variable} antialiased`}
         suppressHydrationWarning
