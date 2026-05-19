@@ -45,7 +45,10 @@ export default function StructuredData() {
     name: "Gleaming Software",
     url: "https://gleamingsoftware.com",
     logo: "https://www.ayuplus.in/images/Logo.svg",
-    sameAs: [],
+    sameAs: [
+      "https://www.linkedin.com/company/111806170",
+      "https://www.facebook.com/profile.php?id=61588704586539",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-98949-97482",
