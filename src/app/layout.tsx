@@ -11,6 +11,7 @@ export const viewport: Viewport = {
 import { Inter, Hedvig_Letters_Serif } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "@/components/ChatWidget";
+import DemoNavbar from "@/components/DemoNavbar";
 import StructuredData from "./structured-data";
 
 const inter = Inter({
@@ -112,6 +113,7 @@ export default function RootLayout({
         className={`${inter.variable} ${hedvigSerif.variable} antialiased`}
         suppressHydrationWarning
       >
+        <DemoNavbar />
         {children}
         <ChatWidget />
       </body>

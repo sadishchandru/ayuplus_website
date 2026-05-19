@@ -2,17 +2,40 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DemoModal from "@/components/DemoModal";
 
 const FEATURE_CARDS = [
-  { icon: "📦", title: "Medicine Catalogue", desc: "Categories, dosage forms, unit masters with duplicate-check typeahead. Covers Churna, Oil, Capsule, Ghee, Kashayam and more." },
-  { icon: "🛒", title: "Stock Purchase", desc: "Supplier entry with invoice number, batch number, expiry date — auto-updates inventory on every purchase." },
-  { icon: "💊", title: "Patient Dispensing", desc: "Linked directly to patient OPNo. Every medicine dispensed is auto-added to the patient invoice — zero manual entry." },
-  { icon: "📋", title: "Audit Log", desc: "Every dispensing timestamped and staff-tagged. Full audit trail of who changed what, when, and the old vs new value." },
-  { icon: "⚠️", title: "Low Stock Alerts", desc: "Automated threshold alerts so you never run out of critical medicines without warning." },
-  { icon: "💰", title: "Billing Integration", desc: "Pharmacy charges flow directly into the patient invoice with GST auto-calculated. Cash, Card, and UPI supported." },
+  {
+    icon: "📦",
+    title: "Medicine Catalogue",
+    desc: "Categories, dosage forms, unit masters with duplicate-check typeahead. Covers Churna, Oil, Capsule, Ghee, Kashayam and more.",
+  },
+  {
+    icon: "🛒",
+    title: "Stock Purchase",
+    desc: "Supplier entry with invoice number, batch number, expiry date — auto-updates inventory on every purchase.",
+  },
+  {
+    icon: "💊",
+    title: "Patient Dispensing",
+    desc: "Linked directly to patient OPNo. Every medicine dispensed is auto-added to the patient invoice — zero manual entry.",
+  },
+  {
+    icon: "📋",
+    title: "Audit Log",
+    desc: "Every dispensing timestamped and staff-tagged. Full audit trail of who changed what, when, and the old vs new value.",
+  },
+  {
+    icon: "⚠️",
+    title: "Low Stock Alerts",
+    desc: "Automated threshold alerts so you never run out of critical medicines without warning.",
+  },
+  {
+    icon: "💰",
+    title: "Billing Integration",
+    desc: "Pharmacy charges flow directly into the patient invoice with GST auto-calculated. Cash, Card, and UPI supported.",
+  },
 ];
 
 const BEFORE = [
@@ -31,40 +54,38 @@ const AFTER = [
   "Pharmacy and billing unified in one system",
 ];
 
+function CheckIcon() {
+  return (
+    <div className="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#00A63E] flex items-center justify-center border border-[#00A63E] mt-[2px]">
+      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+  );
+}
+
 export default function PharmacyPage() {
   const [demoOpen, setDemoOpen] = useState(false);
   const openModal = () => setDemoOpen(true);
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar onOpenModal={openModal} />
-
-      {/* Breadcrumb */}
-      <div className="w-full flex justify-center bg-white border-b border-gray-100">
-        <div className="container-1280 w-full pt-[90px] pb-3">
-          <nav className="flex items-center gap-2 text-[13px] text-[#6B7280]">
-            <Link href="/" className="hover:text-[#00A63E] transition-colors">Home</Link>
-            <span>›</span>
-            <span className="text-[#101828] font-medium">Pharmacy Software</span>
-          </nav>
-        </div>
-      </div>
 
       {/* Hero */}
-      <section className="w-full flex justify-center bg-white">
-        <div className="container-1280 w-full py-[60px] md:py-[80px] text-center max-w-3xl mx-auto">
-          <span className="inline-block font-['Inter'] font-semibold text-[12px] leading-[20px] tracking-[1.5px] uppercase text-[#00A63E] border border-[#00A63E]/30 bg-[#00A63E0D] px-[12px] py-[4px] rounded-full mb-[20px]">
-            Ayurvedic Pharmacy Management
-          </span>
-          <h1 className="font-['Inter'] font-bold text-[32px] md:text-[52px] leading-[38px] md:leading-[62px] tracking-[-0.5px] text-[#101828] mb-[20px]">
-            Ayurvedic Pharmacy Software — Zero Revenue Leakage
+      <section className="pt-[100px] md:pt-[140px] pb-[60px] md:pb-[80px] bg-[radial-gradient(ellipse_at_top,_#00A63E0D_0%,_white_60%)] flex flex-col items-center">
+        <div className="container-1280 text-center w-full px-4">
+          <div className="flex justify-center mb-2">
+            <img src="/images/leaf.svg" alt="Leaf" style={{ width: 55, height: "auto" }} />
+          </div>
+          <h1 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[52px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-[#101828] mb-[20px]">
+            Ayurvedic Pharmacy Software —<br className="hidden md:block" /> Zero Revenue Leakage
           </h1>
-          <p className="font-['Inter'] text-[17px] md:text-[20px] leading-[28px] md:leading-[34px] text-[#4A5565] mb-[36px] max-w-2xl mx-auto">
-            Every medicine dispensed is automatically added to the patient invoice. No unbilled dispensing. No manual entry.
+          <p className="font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
+            Every medicine dispensed is automatically added to the patient invoice.<br className="hidden md:block" /> No unbilled dispensing. No manual entry.
           </p>
           <button
             onClick={openModal}
-            className="px-8 py-4 bg-[#00A63E] text-white font-['Inter'] font-semibold text-[16px] rounded-xl hover:bg-[#008236] transition-colors shadow-md hover:shadow-lg"
+            className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl"
           >
             Book Free Demo →
           </button>
@@ -73,21 +94,38 @@ export default function PharmacyPage() {
 
       {/* Feature Cards */}
       <section className="w-full flex justify-center bg-[#FAFAFA]">
-        <div className="container-1280 w-full py-[50px] md:py-[70px]">
-          <div className="text-center mb-10 md:mb-14">
+        <div className="container-1280 w-full py-[60px] md:py-[80px] px-4">
+          <div className="text-center mb-12">
             <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#00A63E] uppercase tracking-widest mb-3">
               6 Pharmacy Screens
             </span>
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] leading-[36px] md:leading-[52px] text-[#101828]">
               Everything pharmacy — in one place
             </h2>
+            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
+              From catalogue management to patient dispensing, every pharmacy operation is covered.
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
             {FEATURE_CARDS.map((card) => (
-              <div key={card.title} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-3 hover:shadow-md transition-shadow">
-                <div className="text-[28px]">{card.icon}</div>
-                <p className="font-['Inter'] font-semibold text-[17px] text-[#101828]">{card.title}</p>
-                <p className="font-['Inter'] text-[14px] leading-[22px] text-[#6B7280]">{card.desc}</p>
+              <div
+                key={card.title}
+                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
+              >
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="w-10 h-10 rounded-xl bg-[#f0faf4] flex items-center justify-center text-[20px] flex-shrink-0">
+                      {card.icon}
+                    </div>
+                    <h3 className="font-['Inter'] font-bold text-[20px] leading-snug text-[#101828]">{card.title}</h3>
+                  </div>
+                  <ul className="space-y-5">
+                    <li className="flex items-start gap-3">
+                      <CheckIcon />
+                      <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{card.desc}</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -96,37 +134,38 @@ export default function PharmacyPage() {
 
       {/* Before / After */}
       <section className="w-full flex justify-center bg-white">
-        <div className="container-1280 w-full py-[50px] md:py-[70px]">
-          <div className="text-center mb-10 md:mb-14">
+        <div className="container-1280 w-full py-[60px] md:py-[80px] px-4">
+          <div className="text-center mb-12">
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-[#101828]">
               Before &amp; After AyuPlus
             </h2>
+            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
+              See what changes the moment you go live.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl border border-red-100 p-8">
-              <p className="font-['Inter'] font-semibold text-[13px] text-red-500 uppercase tracking-widest mb-5">Before AyuPlus</p>
-              <ul className="space-y-4">
+            <div className="bg-white rounded-2xl border border-red-100 p-8 hover:shadow-md transition-shadow">
+              <p className="font-['Inter'] font-semibold text-[13px] text-red-500 uppercase tracking-widest mb-6">Before AyuPlus</p>
+              <ul className="space-y-5">
                 {BEFORE.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    <span className="font-['Inter'] text-[14px] leading-[22px] text-[#374151]">{item}</span>
+                    <div className="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-red-100 flex items-center justify-center mt-[2px]">
+                      <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <span className="font-['Inter'] text-[16px] leading-[26px] text-[#374151]">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-white rounded-2xl border border-[#BBF7D0] p-8">
-              <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] uppercase tracking-widest mb-5">After AyuPlus</p>
-              <ul className="space-y-4">
+            <div className="bg-white rounded-2xl border border-[#BBF7D0] p-8 hover:shadow-md transition-shadow">
+              <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] uppercase tracking-widest mb-6">After AyuPlus</p>
+              <ul className="space-y-5">
                 {AFTER.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#00A63E] flex items-center justify-center mt-0.5">
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <span className="font-['Inter'] text-[14px] leading-[22px] text-[#374151]">{item}</span>
+                  <li key={item} className="flex items-start gap-3 group">
+                    <CheckIcon />
+                    <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -135,13 +174,40 @@ export default function PharmacyPage() {
         </div>
       </section>
 
+      {/* Internal Links */}
+      <section className="w-full flex justify-center bg-white py-[40px] md:py-[56px]">
+        <div className="container-1280 w-full px-4">
+          <p className="font-['Inter'] font-semibold text-[13px] text-[#6B7280] uppercase tracking-widest mb-6 text-center">Explore other AyuPlus modules</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/" className="flex items-center justify-between bg-[#f0faf4] rounded-xl p-5 hover:bg-[#dcfce7] transition-colors group">
+              <span className="font-['Inter'] font-medium text-[15px] text-[#101828]">AyuPlus Home</span>
+              <svg className="w-4 h-4 text-[#00A63E] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/case-sheets" className="flex items-center justify-between bg-[#f0faf4] rounded-xl p-5 hover:bg-[#dcfce7] transition-colors group">
+              <span className="font-['Inter'] font-medium text-[15px] text-[#101828]">Clinical Case Sheets</span>
+              <svg className="w-4 h-4 text-[#00A63E] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/opd-ipd-management" className="flex items-center justify-between bg-[#f0faf4] rounded-xl p-5 hover:bg-[#dcfce7] transition-colors group">
+              <span className="font-['Inter'] font-medium text-[15px] text-[#101828]">OPD &amp; IPD Management</span>
+              <svg className="w-4 h-4 text-[#00A63E] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="w-full flex justify-center py-[50px] md:py-[70px]" style={{ background: "linear-gradient(135deg, #003d1a 0%, #005c28 100%)" }}>
-        <div className="container-1280 w-full text-center">
+      <section className="w-full flex justify-center py-[60px] md:py-[80px]" style={{ background: "linear-gradient(135deg, #003d1a 0%, #005c28 100%)" }}>
+        <div className="container-1280 w-full text-center px-4">
           <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-white mb-4">
             Stop losing revenue on pharmacy billing
           </h2>
-          <p className="font-['Inter'] text-[16px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
+          <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
             See how AyuPlus links every dispensing to an invoice automatically — no gaps, no manual reconciliation.
           </p>
           <button
@@ -153,33 +219,6 @@ export default function PharmacyPage() {
           <div>
             <Link href="/" className="font-['Inter'] text-[14px] text-[#86efac] hover:text-white transition-colors">
               ← Back to AyuPlus Home
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Internal Links */}
-      <section className="w-full flex justify-center bg-white py-[40px] md:py-[56px]">
-        <div className="container-1280 w-full">
-          <p className="font-['Inter'] font-semibold text-[13px] text-[#6B7280] uppercase tracking-widest mb-6 text-center">Explore other AyuPlus modules</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <Link href="/" className="flex items-center justify-between bg-[#f0faf4] rounded-xl p-5 hover:bg-[#dcfce7] transition-colors group">
-              <span className="font-['Inter'] font-medium text-[15px] text-[#101828]">AyuPlus Home</span>
-              <svg className="w-4 h-4 text-[#00A63E] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <Link href="/panchakarma-software" className="flex items-center justify-between bg-[#f0faf4] rounded-xl p-5 hover:bg-[#dcfce7] transition-colors group">
-              <span className="font-['Inter'] font-medium text-[15px] text-[#101828]">Panchakarma Software</span>
-              <svg className="w-4 h-4 text-[#00A63E] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <Link href="/opd-ipd-management" className="flex items-center justify-between bg-[#f0faf4] rounded-xl p-5 hover:bg-[#dcfce7] transition-colors group">
-              <span className="font-['Inter'] font-medium text-[15px] text-[#101828]">OPD & IPD Management</span>
-              <svg className="w-4 h-4 text-[#00A63E] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
             </Link>
           </div>
         </div>

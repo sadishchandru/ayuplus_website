@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import VaidyaMode from "@/components/VaidyaMode";
@@ -16,7 +15,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar onOpenModal={openModal} />
       <Hero onOpenModal={openModal} />
       <SocialProofBar />
       <Stats />
