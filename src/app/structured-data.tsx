@@ -114,8 +114,33 @@ export default function StructuredData() {
     ],
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "AyuPlus HMS",
+    url: "https://www.ayuplus.in",
+    description:
+      "India's purpose-built Ayurvedic Hospital Management System — OPD, IPD, Panchakarma, Pharmacy, Billing, and Prakruti assessment.",
+    publisher: {
+      "@type": "Organization",
+      name: "Gleaming Software",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://www.ayuplus.in/?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}

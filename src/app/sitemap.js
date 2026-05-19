@@ -8,6 +8,6 @@ export default function sitemap() {
     { url: "https://www.ayuplus.in/digital-prescription", lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: "https://www.ayuplus.in/ayurvedic-pharmacy-software", lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: "https://www.ayuplus.in/opd-ipd-management", lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: "https://www.ayuplus.in/contact", lastModified: new Date(), changeFrequency: "yearly", priority: 0.7 },
+    { url: "https://www.ayuplus.in/contact", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
   ];
 }
