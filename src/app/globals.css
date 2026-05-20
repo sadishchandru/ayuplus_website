@@ -53,3 +53,13 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@media (max-width: 640px) {
+  .hero-demo-cta {
+    width: 100% !important;
+    max-width: 320px !important;
+    justify-content: center !important;
+    font-size: 15px !important;
+    padding: 14px 24px !important;
+  }
+}

@@ -18,6 +18,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Hero onOpenModal={openModal} />
+
       <SocialProofBar />
       <ClientShowcase />
       <Stats />
