@@ -111,6 +111,30 @@ export default function StructuredData() {
           text: "Most hospitals go live within days, not months. Gleaming Software handles data migration, system setup, and staff training as part of onboarding.",
         },
       },
+      {
+        "@type": "Question",
+        name: "What is the pricing for AyuPlus?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "AyuPlus pricing is customised based on hospital size and the modules required. Contact Gleaming Software at +91 98949 97482 or contact@ayuplus.com for a tailored quote.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is AyuPlus billing GST-ready?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. AyuPlus generates GST-compliant invoices for consultations, pharmacy, and Panchakarma procedures, with automatic tax calculation and printable bills.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is Vaidya Mode in AyuPlus?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vaidya Mode is a dedicated interface for Ayurvedic doctors (Vaidyas) to record classical examination findings, Prakruti assessments, Dosha scores, and treatment plans — all within the patient's clinical record.",
+        },
+      },
     ],
   };
 

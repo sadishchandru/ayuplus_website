@@ -7,33 +7,36 @@ export default function DashboardMockup({
   urlBar = "app.ayuplus.in",
   badge = "Live Preview",
   height = 420,
+  showChrome = false,
 }) {
   return (
     <div style={{ position: "relative", width: "100%", filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.18))" }}>
 
-      {/* Browser chrome */}
-      <div style={{
-        background: "#1e1e1e",
-        borderRadius: "12px 12px 0 0",
-        padding: "10px 16px",
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-      }}>
-        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57", display: "inline-block", flexShrink: 0 }} />
-        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e", display: "inline-block", flexShrink: 0 }} />
-        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840", display: "inline-block", flexShrink: 0 }} />
-        <div className="mockup-url-bar" style={{
-          flex: 1, background: "#2d2d2d", borderRadius: "6px",
-          padding: "4px 12px", marginLeft: "8px", fontSize: "12px",
-          color: "#888", display: "flex", alignItems: "center", gap: "6px",
+      {/* Browser chrome — only when showChrome=true */}
+      {showChrome && (
+        <div style={{
+          background: "#1e1e1e",
+          borderRadius: "12px 12px 0 0",
+          padding: "10px 16px",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
         }}>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="#888" style={{ flexShrink: 0 }}>
-            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-          </svg>
-          {urlBar}
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57", display: "inline-block", flexShrink: 0 }} />
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e", display: "inline-block", flexShrink: 0 }} />
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840", display: "inline-block", flexShrink: 0 }} />
+          <div className="mockup-url-bar" style={{
+            flex: 1, background: "#2d2d2d", borderRadius: "6px",
+            padding: "4px 12px", marginLeft: "8px", fontSize: "12px",
+            color: "#888", display: "flex", alignItems: "center", gap: "6px",
+          }}>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#888" style={{ flexShrink: 0 }}>
+              <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+            </svg>
+            {urlBar}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Screenshot container */}
       <div
@@ -42,9 +45,9 @@ export default function DashboardMockup({
           position: "relative",
           overflow: "hidden",
           height: `${height}px`,
-          borderRadius: "0 0 12px 12px",
+          borderRadius: showChrome ? "0 0 12px 12px" : "16px",
           border: "1px solid #e0e0e0",
-          borderTop: "none",
+          borderTop: showChrome ? "none" : "1px solid #e0e0e0",
           background: "#f8f8f8",
         }}
       >

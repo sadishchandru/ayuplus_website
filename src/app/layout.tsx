@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | AyuPlus HMS",
   },
   description:
-    "AyuPlus is India’s purpose-built Ayurvedic Hospital Management System. Manage OPD, IPD, Panchakarma, Pharmacy, Billing & Prakruti assessment in one platform. Trusted by Ayurvedic hospitals across Kerala, Karnataka, Tamil Nadu.",
+    "AyuPlus is India’s purpose-built Ayurvedic Hospital Management System. Manage OPD, IPD, Panchakarma, Pharmacy, Billing & Prakruti in one platform. Trusted by Hari Ashtanga Ayurveda Chikitsalaya, Puducherry — 14,757 patients. Starting ₹1,499/month.",
   keywords: [
     "Ayurvedic hospital management system",
     "Ayurveda HMS software India",
@@ -46,6 +46,10 @@ export const metadata: Metadata = {
     "Ayurvedic EMR software",
     "dosha assessment software",
     "Gleaming Software AyuPlus",
+    "ayurvedic HMS pricing India",
+    "ayurvedic hospital software ₹1499",
+    "affordable ayurvedic clinic software",
+    "Puducherry ayurvedic hospital software",
   ],
   authors: [{ name: "Gleaming Software", url: "https://gleamingsoftware.com" }],
   creator: "Gleaming Software",
