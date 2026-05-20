@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
-  { href: "/vaidya-mode", label: "Vaidya Mode" },
   { href: "/digital-prescription", label: "Prescription Pad" },
+  { href: "/vaidya-mode", label: "Vaidya Mode" },
   { href: "/case-sheets", label: "Case Sheets" },
   { href: "/billing", label: "Billing" },
+  { href: "/hospital-settings", label: "Features" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/hospital-settings", label: "Settings" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -33,37 +33,38 @@ const Navbar = ({ onOpenModal }: { onOpenModal?: () => void }) => {
             alt="AyuPlus Logo"
             width={123}
             height={42}
-            className="rounded-xl w-[90px] md:w-full"
+            className="rounded-xl w-[100px] xl:w-[123px]"
             style={{ height: "auto" }}
           />
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center space-x-5">
+        {/* Desktop nav — only on xl (1280px+) */}
+        <div className="hidden xl:flex items-center gap-x-5">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-[#374151] hover:text-[#00A63E] transition-colors font-medium text-[14px] whitespace-nowrap"
+              className="text-[#374151] hover:text-[#00A63E] transition-colors font-medium text-[13px] whitespace-nowrap"
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* Desktop CTA + Mobile hamburger */}
+        {/* Right side: CTA button + hamburger */}
         <div className="flex items-center gap-3">
+          {/* CTA — desktop only */}
           <button
             onClick={onOpenModal}
-            className="hidden md:inline-flex px-[16px] py-[8px] rounded-md bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] text-white font-medium text-[14px] transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap shadow-md hover:shadow-lg"
+            className="hidden xl:inline-flex px-[14px] py-[8px] rounded-md bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] text-white font-medium text-[13px] transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap shadow-md hover:shadow-lg"
           >
-            Request Hospital Demo
+            Request Demo
           </button>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger — tablet + mobile (under 1280px) */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px]"
+            className="xl:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px]"
             aria-label="Toggle menu"
           >
             <span className={`block w-5 h-[2px] bg-[#374151] transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
@@ -73,9 +74,9 @@ const Navbar = ({ onOpenModal }: { onOpenModal?: () => void }) => {
         </div>
       </div>
 
-      {/* Mobile menu dropdown */}
+      {/* Dropdown menu — tablet + mobile */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white border-b border-[#DBDBDB] shadow-lg transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
+        className={`xl:hidden absolute top-full left-0 right-0 bg-white border-b border-[#DBDBDB] shadow-lg transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
       >
         <div className="px-4 py-4 flex flex-col gap-1">
           <Link

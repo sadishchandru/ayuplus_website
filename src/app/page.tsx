@@ -25,7 +25,7 @@ export default function Home() {
       <VaidyaMode />
       <Features />
       <PainPointsSection />
-      {/* <TestimonialsSection /> */}
+      <TestimonialsSection />
       <FAQ />
       <LeadSection onOpenModal={openModal} />
       <Footer />

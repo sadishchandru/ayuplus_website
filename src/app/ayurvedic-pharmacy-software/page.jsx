@@ -80,13 +80,10 @@ export default function PharmacyPage() {
           <h1 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[52px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-[#101828] mb-[20px]">
             Ayurvedic Pharmacy Software —<br className="hidden md:block" /> Zero Revenue Leakage
           </h1>
-          <p className="font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
+          <p className="ayup-section-sub font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
             Every medicine dispensed is automatically added to the patient invoice.<br className="hidden md:block" /> No unbilled dispensing. No manual entry.
           </p>
-          <button
-            onClick={openModal}
-            className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl"
-          >
+          <button onClick={openModal} className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95">
             Book Free Demo →
           </button>
         </div>
@@ -102,29 +99,21 @@ export default function PharmacyPage() {
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] leading-[36px] md:leading-[52px] text-[#101828]">
               Everything pharmacy — in one place
             </h2>
-            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
+            <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
               From catalogue management to patient dispensing, every pharmacy operation is covered.
             </p>
           </div>
-          <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
+          <div className="ayup-grid-3">
             {FEATURE_CARDS.map((card) => (
-              <div
-                key={card.title}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
-              >
-                <div className="p-8 flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-8">
+              <div key={card.title} className="ayup-card bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-[#f0faf4] flex items-center justify-center text-[20px] flex-shrink-0">
                       {card.icon}
                     </div>
-                    <h3 className="font-['Inter'] font-bold text-[20px] leading-snug text-[#101828]">{card.title}</h3>
+                    <h3 className="font-['Inter'] font-semibold text-[15px] leading-snug text-[#003d1a]">{card.title}</h3>
                   </div>
-                  <ul className="space-y-5">
-                    <li className="flex items-start gap-3">
-                      <CheckIcon />
-                      <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{card.desc}</span>
-                    </li>
-                  </ul>
+                  <p className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#5a7a65]">{card.desc}</p>
                 </div>
               </div>
             ))}
@@ -139,14 +128,14 @@ export default function PharmacyPage() {
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-[#101828]">
               Before &amp; After AyuPlus
             </h2>
-            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
+            <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
               See what changes the moment you go live.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl border border-red-100 p-8 hover:shadow-md transition-shadow">
               <p className="font-['Inter'] font-semibold text-[13px] text-red-500 uppercase tracking-widest mb-6">Before AyuPlus</p>
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {BEFORE.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-red-100 flex items-center justify-center mt-[2px]">
@@ -154,18 +143,18 @@ export default function PharmacyPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </div>
-                    <span className="font-['Inter'] text-[16px] leading-[26px] text-[#374151]">{item}</span>
+                    <span className="font-['Inter'] text-[13px] leading-[20px] text-[#374151]">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="bg-white rounded-2xl border border-[#BBF7D0] p-8 hover:shadow-md transition-shadow">
               <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] uppercase tracking-widest mb-6">After AyuPlus</p>
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {AFTER.map((item) => (
                   <li key={item} className="flex items-start gap-3 group">
                     <CheckIcon />
-                    <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{item}</span>
+                    <span className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#374151]">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -207,13 +196,10 @@ export default function PharmacyPage() {
           <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-white mb-4">
             Stop losing revenue on pharmacy billing
           </h2>
-          <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
+          <p className="font-['Inter'] text-[15px] leading-[26px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
             See how AyuPlus links every dispensing to an invoice automatically — no gaps, no manual reconciliation.
           </p>
-          <button
-            onClick={openModal}
-            className="px-8 py-4 bg-white text-[#00A63E] font-['Inter'] font-semibold text-[16px] rounded-xl hover:bg-[#f0faf4] transition-colors shadow-md mb-6"
-          >
+          <button onClick={openModal} className="border-2 border-white text-white bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-white hover:text-[#003d1a] transition-all duration-300 hover:scale-105 active:scale-95 mb-6">
             Book Free Demo →
           </button>
           <div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import DemoModal from "@/components/DemoModal";
+
 const CASE_SHEETS = [
   {
     icon: "🦴",
@@ -164,13 +165,10 @@ export default function CaseSheetsPage() {
           <h1 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[52px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-[#101828] mb-[20px]">
             9 Structured Clinical Case Sheets
           </h1>
-          <p className="font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
+          <p className="ayup-section-sub font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
             Purpose-built digital forms for every Ayurvedic clinical workflow —<br className="hidden md:block" /> from orthopaedic examinations to Panchakarma procedures. No more paper. No more lost records.
           </p>
-          <button
-            onClick={openModal}
-            className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl"
-          >
+          <button onClick={openModal} className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95">
             Book Free Demo →
           </button>
         </div>
@@ -178,7 +176,7 @@ export default function CaseSheetsPage() {
 
       {/* Intro Strip */}
       <div className="w-full bg-[#f0faf4] py-[14px] flex justify-center border-b border-[#BBF7D0]">
-        <p className="font-['Inter'] font-semibold text-[14px] text-[#00A63E] text-center px-4">
+        <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] text-center px-4">
           9 Case Sheets &nbsp;·&nbsp; Fully Digital &nbsp;·&nbsp; Printable Reports &nbsp;·&nbsp; Linked to Patient OPNo
         </p>
       </div>
@@ -190,41 +188,34 @@ export default function CaseSheetsPage() {
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-[#101828] mb-3">
               Every case sheet your hospital needs
             </h2>
-            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] max-w-xl mx-auto">
+            <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] max-w-xl mx-auto">
               Each form is linked to the patient&apos;s OPNo — searchable, editable, and printable at any time.
             </p>
           </div>
 
-          <div
-            className="grid gap-8"
-            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}
-          >
+          <div className="ayup-grid-3">
             {CASE_SHEETS.map((sheet) => (
-              <div
-                key={sheet.name}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
-              >
-                <div className="p-8 flex flex-col flex-1">
-                  {/* Card header — matches OPD/IPD style */}
-                  <div className="flex items-center gap-3 mb-8">
+              <div key={sheet.name} className="ayup-card bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-[#f0faf4] flex items-center justify-center text-[20px] flex-shrink-0">
                       {sheet.icon}
                     </div>
-                    <h3 className="font-['Inter'] font-bold text-[20px] leading-snug text-[#101828]">
+                    <h3 className="font-['Inter'] font-semibold text-[15px] leading-snug text-[#003d1a]">
                       {sheet.name}
                     </h3>
                   </div>
-                  {/* Fields */}
-                  <ul className="space-y-5">
+                  <p className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#5a7a65] mb-4">{sheet.desc}</p>
+                  <ul className="space-y-3">
                     {sheet.fields.map((f) => (
                       <li key={f.title} className="flex items-start gap-3 group">
                         <CheckIcon />
                         <div>
-                          <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">
+                          <span className="font-['Inter'] font-medium text-[13px] leading-[20px] text-[#101828]">
                             {f.title}
                           </span>
                           {f.desc && (
-                            <p className="font-['Inter'] font-normal text-[14px] leading-[22px] tracking-[-0.31px] text-[#4A5565]">
+                            <p className="font-['Inter'] font-normal text-[12px] leading-[18px] text-[#4A5565]">
                               {f.desc}
                             </p>
                           )}
@@ -246,16 +237,16 @@ export default function CaseSheetsPage() {
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[38px] text-[#101828] mb-3">
               Why digital case sheets?
             </h2>
-            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] max-w-lg mx-auto">
+            <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] max-w-lg mx-auto">
               Paper forms slow down clinicians and lose data. AyuPlus keeps every finding structured and instantly retrievable.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="ayup-grid-4">
             {WHY_ITEMS.map((item) => (
-              <div key={item.title} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center hover:shadow-md transition-shadow">
+              <div key={item.title} className="ayup-card bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center hover:shadow-md transition-shadow">
                 <div className="text-[38px] mb-4">{item.icon}</div>
-                <h3 className="font-['Inter'] font-bold text-[16px] text-[#101828] mb-2">{item.title}</h3>
-                <p className="font-['Inter'] text-[14px] leading-[22px] text-[#4A5565]">{item.desc}</p>
+                <h3 className="font-['Inter'] font-semibold text-[15px] text-[#003d1a] mb-2">{item.title}</h3>
+                <p className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#5a7a65]">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -292,21 +283,15 @@ export default function CaseSheetsPage() {
       </section>
 
       {/* CTA */}
-      <section
-        className="w-full flex justify-center py-[60px] md:py-[80px]"
-        style={{ background: "linear-gradient(135deg, #003d1a 0%, #005c28 100%)" }}
-      >
+      <section className="w-full flex justify-center py-[60px] md:py-[80px]" style={{ background: "linear-gradient(135deg, #003d1a 0%, #005c28 100%)" }}>
         <div className="container-1280 w-full text-center px-4">
           <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-white mb-4">
             See all 9 case sheets in a live demo
           </h2>
-          <p className="font-['Inter'] text-[16px] md:text-[18px] text-[#bbf7d0] mb-8 max-w-xl mx-auto leading-[28px]">
+          <p className="font-['Inter'] text-[15px] text-[#bbf7d0] mb-8 max-w-xl mx-auto leading-[26px]">
             Our team will walk you through every form configured for your hospital&apos;s clinical workflows.
           </p>
-          <button
-            onClick={openModal}
-            className="px-8 py-4 bg-[#00A63E] text-white font-['Inter'] font-semibold text-[16px] rounded-xl hover:bg-[#008236] transition-colors shadow-md mb-7"
-          >
+          <button onClick={openModal} className="border-2 border-white text-white bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-white hover:text-[#003d1a] transition-all duration-300 hover:scale-105 active:scale-95 mb-7">
             Book Free Demo →
           </button>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

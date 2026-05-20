@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import DemoModal from "@/components/DemoModal";
+
 const MODULES = [
   {
     icon: "🛏️",
@@ -118,10 +119,10 @@ export default function HospitalSettingsPage() {
           <h1 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[52px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-[#101828] mb-[20px]">
             Complete Hospital Configuration<br className="hidden md:block" /> in One Place
           </h1>
-          <p className="font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
+          <p className="ayup-section-sub font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
             Bed layout, staff shifts, user roles, SMS/WhatsApp notifications, and all master data —<br className="hidden md:block" /> configured once from a single settings panel.
           </p>
-          <button onClick={openModal} className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl">
+          <button onClick={openModal} className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95">
             Book Free Demo →
           </button>
         </div>
@@ -134,23 +135,24 @@ export default function HospitalSettingsPage() {
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-[#101828] mb-3">
               5 configuration modules
             </h2>
-            <p className="font-['Inter'] text-[16px] md:text-[18px] text-[#4A5565]">
+            <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] text-[#4A5565]">
               Everything your hospital needs to run — configured once.
             </p>
           </div>
-          <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
+          <div className="ayup-grid-3">
             {MODULES.map((mod) => (
-              <div key={mod.title} className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
-                <div className="p-8 flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-8">
+              <div key={mod.title} className="ayup-card bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-[#f0faf4] flex items-center justify-center text-[20px] flex-shrink-0">{mod.icon}</div>
-                    <h3 className="font-['Inter'] font-bold text-[20px] leading-snug text-[#101828]">{mod.title}</h3>
+                    <h3 className="font-['Inter'] font-semibold text-[15px] leading-snug text-[#003d1a]">{mod.title}</h3>
                   </div>
-                  <ul className="space-y-5">
+                  <p className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#5a7a65] mb-4">{mod.desc}</p>
+                  <ul className="space-y-3">
                     {mod.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
                         <CheckIcon />
-                        <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{f}</span>
+                        <span className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#374151]">{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -169,12 +171,12 @@ export default function HospitalSettingsPage() {
               Who manages settings?
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="ayup-grid-3">
             {ROLES.map((r) => (
-              <div key={r.title} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 text-center hover:shadow-md transition-shadow">
+              <div key={r.title} className="ayup-card bg-white rounded-2xl border border-gray-100 shadow-sm p-7 text-center hover:shadow-md transition-shadow">
                 <div className="text-[38px] mb-4">{r.icon}</div>
-                <h3 className="font-['Inter'] font-bold text-[17px] text-[#101828] mb-2">{r.title}</h3>
-                <p className="font-['Inter'] text-[14px] leading-[22px] text-[#4A5565]">{r.desc}</p>
+                <h3 className="font-['Inter'] font-semibold text-[15px] text-[#003d1a] mb-2">{r.title}</h3>
+                <p className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#5a7a65]">{r.desc}</p>
               </div>
             ))}
           </div>
@@ -237,10 +239,10 @@ export default function HospitalSettingsPage() {
           <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-white mb-4">
             We configure everything with you during onboarding
           </h2>
-          <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#bbf7d0] mb-8 max-w-2xl mx-auto">
+          <p className="font-['Inter'] text-[15px] leading-[26px] text-[#bbf7d0] mb-8 max-w-2xl mx-auto">
             Our team handles the complete hospital setup during your onboarding session — bed layout, roles, number series, and messaging APIs — so you go live without any technical friction.
           </p>
-          <button onClick={openModal} className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-['Inter'] font-medium text-[16px] text-white px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg mb-6">
+          <button onClick={openModal} className="border-2 border-white text-white bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-white hover:text-[#003d1a] transition-all duration-300 hover:scale-105 active:scale-95 mb-6">
             Book Free Demo →
           </button>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-2">

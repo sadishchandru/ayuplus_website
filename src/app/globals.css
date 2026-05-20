@@ -54,12 +54,154 @@ html {
   scroll-behavior: smooth;
 }
 
-@media (max-width: 640px) {
+/* ── AyuPlus Global Typography & Responsive Fixes ── */
+
+/* Card headings */
+.ayup-card h3,
+.ayup-card h4 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: #003d1a;
+}
+
+/* Card body text */
+.ayup-card p,
+.ayup-card span,
+.ayup-card li {
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+  color: #5a7a65;
+}
+
+/* Section subtexts */
+.ayup-section-sub {
+  font-size: clamp(14px, 1.8vw, 17px) !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  color: #4a6654;
+}
+
+/* Feature list items */
+.ayup-feature-item strong {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+.ayup-feature-item p,
+.ayup-feature-item span {
+  font-weight: 400 !important;
+  font-size: 13px !important;
+}
+
+/* ── Responsive Grid Classes ── */
+
+.ayup-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.ayup-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.ayup-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.ayup-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ── Breakpoints ── */
+
+@media (max-width: 1024px) {
+  .ayup-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .ayup-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .ayup-two-col { gap: 40px !important; }
+}
+
+@media (max-width: 768px) {
+  .ayup-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .ayup-grid-3 { grid-template-columns: repeat(1, 1fr) !important; }
+  .ayup-grid-2 { grid-template-columns: repeat(1, 1fr) !important; }
+  .ayup-two-col {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .ayup-hide-tablet { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .ayup-grid-4 { grid-template-columns: 1fr !important; }
+  .ayup-grid-3 { grid-template-columns: 1fr !important; }
+  .ayup-grid-2 { grid-template-columns: 1fr !important; }
+  .ayup-two-col { grid-template-columns: 1fr !important; }
+  .ayup-card { padding: 16px !important; }
+}
+
+/* Dashboard mockup responsive */
+.dashboard-img-container { height: 380px; }
+@media (max-width: 1024px) { .dashboard-img-container { height: 320px !important; } }
+@media (max-width: 768px)  { .dashboard-img-container { height: 240px !important; } }
+@media (max-width: 480px)  { .dashboard-img-container { height: 200px !important; } }
+
+/* Pricing table overflow on mobile */
+.pricing-compare-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Pricing cards responsive */
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 1024px) {
+  .pricing-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .pricing-cards-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Contact form grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 40px;
+}
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+}
+
+/* Lead section grid */
+.lead-grid-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  align-items: flex-start;
+}
+@media (max-width: 768px) {
+  .lead-grid-inner { flex-direction: column !important; gap: 32px !important; }
+}
+
+/* Hero CTA button */
+.hero-demo-cta {
+  min-width: 220px;
+}
+@media (max-width: 480px) {
   .hero-demo-cta {
     width: 100% !important;
-    max-width: 320px !important;
-    justify-content: center !important;
+    max-width: 100% !important;
     font-size: 15px !important;
-    padding: 14px 24px !important;
+    padding: 14px 20px !important;
   }
 }

@@ -115,72 +115,84 @@ export function PainPointsSection() {
 
 // ─── TestimonialsSection ──────────────────────────────────────────────────────
 
-const TESTIMONIALS = [
-  {
-    quote: "Finally a system that understands Panchakarma documentation. Day-wise Snehapanam entries, Samyak Lakshana tracking, therapist notes — all in one place. Our Vaidyas stopped complaining about software for the first time.",
-    name: "Dr. Radhakrishnan N.",
-    role: "Chief Physician",
-    hospital: "Thrissur Ayurveda Hospital",
-    initials: "RN",
-  },
-  {
-    quote: "The Prakruti assessment module transformed our consultation quality. Doctors now pull up the constitutional profile at every visit — it's become central to how we plan treatments and measure outcomes.",
-    name: "Sunita Menon",
-    role: "Administrator",
-    hospital: "Bengaluru",
-    initials: "SM",
-  },
-  {
-    quote: "Billing across departments used to be chaos. AyuPlus unified it — OPD charges, pharmacy, procedures, and advance payments all reconcile automatically. Month-end closing went from two days to two hours.",
-    name: "Krishna Prasad",
-    role: "Director",
-    hospital: "Vaidyasala Network",
-    initials: "KP",
-  },
-];
-
 export function TestimonialsSection() {
   return (
-    <section className="w-full flex justify-center bg-white py-[50px] md:py-[80px]">
-      <div className="container-1280 w-full">
+    <section className="w-full flex justify-center bg-[#f7fdf9] py-[60px] md:py-[90px] border-y border-[#d4ead9]">
+      <div className="container-1280 w-full px-4">
+
         <div className="text-center mb-10 md:mb-14">
           <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#00A63E] uppercase tracking-widest mb-3">
-            What Clinics Say
+            From a practising Vaidya
           </span>
-          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-[#101828]">
-            Loved by Vaidyas &amp; Administrators
+          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[26px] md:text-[40px] leading-[34px] md:leading-[52px] text-[#101828]">
+            In their own words
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map(({ quote, name, role, hospital, initials }) => (
-            <div
-              key={name}
-              className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300"
-            >
-              <div className="flex gap-0.5 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-[#00A63E] text-[18px] leading-none">★</span>
-                ))}
-              </div>
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white rounded-2xl border border-[#c8e6d0] shadow-sm p-8 md:p-12 relative">
 
-              <p className="font-['Inter'] text-[15px] leading-[26px] text-[#374151] mb-5 flex-1">
-                &ldquo;{quote}&rdquo;
+            {/* Opening quote mark */}
+            <div className="absolute top-6 left-8 md:top-8 md:left-10 font-['Hedvig_Letters_Serif'] text-[80px] md:text-[100px] leading-none text-[#00A63E] opacity-15 select-none pointer-events-none">
+              &ldquo;
+            </div>
+
+            {/* Stars */}
+            <div className="flex gap-1 mb-6">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-[#00A63E] text-[18px] leading-none">★</span>
+              ))}
+            </div>
+
+            {/* Quote — 4 paragraphs */}
+            <div className="space-y-4 mb-8 relative z-10">
+              <p className="font-['Inter'] text-[15px] md:text-[16px] leading-[26px] md:leading-[28px] text-[#374151]">
+                Panchakarma records on paper — day-wise Snehapana, Vamanam, Vasthi — all handwritten. At follow-up, we were often reconstructing from memory. That&apos;s not how a serious practice should run.
               </p>
+              <p className="font-['Inter'] text-[15px] md:text-[16px] leading-[26px] md:leading-[28px] text-[#374151]">
+                With Varma and Shalyatantra alongside OPD, our workflows are more layered than a general clinic. AyuPlus was the first system that understood that — Prakruti, Asta Sthana Pariksha, Dosha evaluation all live inside the patient record where they belong. Vaidya Mode lets me complete the full consultation without depending on the front desk.
+              </p>
+              <p className="font-['Inter'] text-[15px] md:text-[16px] leading-[26px] md:leading-[28px] text-[#374151]">
+                Billing gaps are gone. Panchakarma sessions now tie directly to invoices. We&apos;ve crossed 14,700+ patient records and the team onboarded us in Tamil with no friction.
+              </p>
+              <p className="font-['Inter'] font-semibold text-[15px] md:text-[16px] leading-[26px] text-[#003d1a]">
+                For any Ayurvedic hospital serious about clinical documentation — this is it.
+              </p>
+            </div>
 
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
-                <div className="w-10 h-10 rounded-full bg-[#00A63E] text-white flex items-center justify-center font-['Inter'] font-semibold text-[13px] flex-shrink-0">
-                  {initials}
-                </div>
+            {/* Divider */}
+            <div className="border-t border-[#e8f0ea] pt-6">
+              <div className="flex items-center gap-4">
+                <img
+                  src="/images/hari_logo.png"
+                  alt="Hari Ashtanga Ayurveda Chikitsalaya"
+                  className="w-[52px] h-[52px] rounded-full border-2 border-[#c8e6d0] object-contain flex-shrink-0"
+                />
                 <div>
-                  <p className="font-['Inter'] font-semibold text-[14px] text-[#101828] leading-tight">{name}</p>
-                  <p className="font-['Inter'] text-[12px] text-[#6B7280] leading-tight">{role}</p>
-                  <p className="font-['Inter'] text-[12px] text-[#00A63E] leading-tight mt-0.5">{hospital}</p>
+                  <p className="font-['Inter'] font-semibold text-[15px] text-[#101828] leading-tight">
+                    Dr. N. Jeeva Anand, BAMS
+                  </p>
+                  <p className="font-['Inter'] text-[12px] text-[#6B7280] leading-snug mt-0.5">
+                    PGDIP, ACU., M.Sc (Varmam &amp; Thokkanam Science) · Reg. No. 379
+                  </p>
+                  <p className="font-['Inter'] font-semibold text-[12px] text-[#00A63E] leading-tight mt-1">
+                    Hari Ashtanga Ayurveda Chikitsalaya, Puducherry
+                  </p>
                 </div>
               </div>
             </div>
-          ))}
+
+          </div>
+
+          {/* Stat tag below card */}
+          <div className="flex justify-center mt-6">
+            <div className="inline-flex items-center gap-2 bg-[#003d1a] text-white rounded-full px-5 py-2.5">
+              <span className="font-['Inter'] font-bold text-[14px]">14,700+</span>
+              <span className="font-['Inter'] text-[13px] text-[#86efac]">patient records on AyuPlus</span>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   );

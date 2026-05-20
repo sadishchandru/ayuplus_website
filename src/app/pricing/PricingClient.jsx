@@ -226,7 +226,7 @@ export default function PricingClient() {
           </p>
           <button
             onClick={openModal}
-            className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl"
+            className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Book Free Demo →
           </button>
@@ -273,13 +273,7 @@ export default function PricingClient() {
 
       {/* Pricing cards */}
       <section style={{ background: "#fff", padding: "20px 5% 60px" }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: "20px",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}>
+        <div className="pricing-cards-grid">
           {plans.map((plan) => (
             <div key={plan.name} style={{
               border: plan.popular ? "2px solid #00A63E" : "1px solid #e0ede4",
@@ -311,7 +305,7 @@ export default function PricingClient() {
               <div style={{ marginBottom: "12px" }}>
                 <span style={{ fontSize: "32px" }}>{plan.icon}</span>
               </div>
-              <h3 style={{ fontSize: "20px", fontWeight: 800, color: "#101828", marginBottom: "4px" }}>{plan.name}</h3>
+              <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#101828", marginBottom: "4px" }}>{plan.name}</h3>
               <span style={{
                 display: "inline-block",
                 fontSize: "11px",
@@ -399,7 +393,7 @@ export default function PricingClient() {
                 flex: "1 1 220px",
               }}>
                 <div style={{ fontSize: "28px", marginBottom: "10px" }}>{a.icon}</div>
-                <h3 style={{ fontSize: "15px", fontWeight: 700, color: "#101828", marginBottom: "6px" }}>{a.title}</h3>
+                <h3 style={{ fontSize: "14px", fontWeight: 600, color: "#101828", marginBottom: "6px" }}>{a.title}</h3>
                 <p style={{ fontSize: "13px", color: "#4a6654", lineHeight: 1.5, marginBottom: "12px" }}>{a.desc}</p>
                 <p style={{ fontSize: "13px", fontWeight: 600, color: "#00A63E" }}>{a.price}</p>
               </div>
@@ -414,7 +408,7 @@ export default function PricingClient() {
           <h2 style={{ fontFamily: "'Hedvig Letters Serif', serif", fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 400, color: "#101828", textAlign: "center", marginBottom: "40px" }}>
             Compare all plans
           </h2>
-          <div style={{ overflowX: "auto" }}>
+          <div className="pricing-compare-table">
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
               <thead>
                 <tr style={{ borderBottom: "2px solid #e0ede4" }}>
@@ -487,16 +481,7 @@ export default function PricingClient() {
           </p>
           <button
             onClick={openModal}
-            style={{
-              background: "#00A63E",
-              color: "#fff",
-              border: "none",
-              borderRadius: "10px",
-              padding: "14px 28px",
-              fontSize: "15px",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
+            className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Book Free Demo →
           </button>
@@ -569,16 +554,7 @@ export default function PricingClient() {
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "12px", marginBottom: "28px" }}>
           <button
             onClick={openModal}
-            style={{
-              background: "#00A63E",
-              color: "#fff",
-              border: "none",
-              borderRadius: "10px",
-              padding: "14px 28px",
-              fontSize: "15px",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
+            className="border-2 border-white text-white bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-white hover:text-[#003d1a] transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Book Free Demo →
           </button>

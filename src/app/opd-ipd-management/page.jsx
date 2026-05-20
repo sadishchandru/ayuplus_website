@@ -69,13 +69,10 @@ export default function OpdIpdPage() {
           <h1 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[52px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-[#101828] mb-[20px]">
             Complete OPD &amp; IPD Management<br className="hidden md:block" /> for Ayurvedic Hospitals
           </h1>
-          <p className="font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
+          <p className="ayup-section-sub font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
             From first registration to discharge —<br className="hidden md:block" /> manage every step of the patient journey in one unified system.
           </p>
-          <button
-            onClick={openModal}
-            className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl"
-          >
+          <button onClick={openModal} className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95">
             Book Free Demo →
           </button>
         </div>
@@ -88,28 +85,28 @@ export default function OpdIpdPage() {
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-[#101828]">
               OPD and IPD — fully integrated
             </h2>
-            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
+            <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] mt-3 max-w-xl mx-auto">
               One patient number, one record, across every department — from OPD to discharge.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* OPD */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-[#f0faf4] flex items-center justify-center">
                   <svg className="w-5 h-5 text-[#00A63E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="font-['Inter'] font-bold text-[22px] text-[#101828]">Outpatient (OPD)</h3>
+                <h3 className="font-['Inter'] font-semibold text-[16px] text-[#101828]">Outpatient (OPD)</h3>
               </div>
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {OPD_FEATURES.map((f) => (
                   <li key={f.title} className="flex items-start gap-3 group">
                     <CheckIcon />
                     <div>
-                      <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{f.title}</span>
-                      <p className="font-['Inter'] font-normal text-[14px] leading-[22px] tracking-[-0.31px] text-[#4A5565]">{f.desc}</p>
+                      <span className="font-['Inter'] font-medium text-[13px] leading-[20px] text-[#101828]">{f.title}</span>
+                      <p className="font-['Inter'] font-normal text-[12px] leading-[18px] text-[#4A5565]">{f.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -117,21 +114,21 @@ export default function OpdIpdPage() {
             </div>
             {/* IPD */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-[#f0faf4] flex items-center justify-center">
                   <svg className="w-5 h-5 text-[#00A63E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <h3 className="font-['Inter'] font-bold text-[22px] text-[#101828]">Inpatient (IPD)</h3>
+                <h3 className="font-['Inter'] font-semibold text-[16px] text-[#101828]">Inpatient (IPD)</h3>
               </div>
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {IPD_FEATURES.map((f) => (
                   <li key={f.title} className="flex items-start gap-3 group">
                     <CheckIcon />
                     <div>
-                      <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{f.title}</span>
-                      <p className="font-['Inter'] font-normal text-[14px] leading-[22px] tracking-[-0.31px] text-[#4A5565]">{f.desc}</p>
+                      <span className="font-['Inter'] font-medium text-[13px] leading-[20px] text-[#101828]">{f.title}</span>
+                      <p className="font-['Inter'] font-normal text-[12px] leading-[18px] text-[#4A5565]">{f.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -152,20 +149,18 @@ export default function OpdIpdPage() {
               <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-[#101828] mb-3">
                 The only HMS with a dedicated doctor workflow
               </h2>
-              <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] max-w-xl mx-auto">
+              <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565] max-w-xl mx-auto">
                 Vaidya Mode lets Ayurvedic doctors manage the entire OPD consultation independently — no front-office dependency.
               </p>
             </div>
-            <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
+            <div className="ayup-grid-4">
               {VAIDYA_FEATURES.map((f) => (
-                <div key={f} className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
-                  <div className="p-8 flex flex-col flex-1">
-                    <ul className="space-y-5">
-                      <li className="flex items-start gap-3">
-                        <CheckIcon />
-                        <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{f}</span>
-                      </li>
-                    </ul>
+                <div key={f} className="ayup-card bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="flex items-start gap-3">
+                      <CheckIcon />
+                      <span className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#374151]">{f}</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -180,7 +175,7 @@ export default function OpdIpdPage() {
           {STATS.map(({ value, label }) => (
             <div key={label} className="flex flex-col items-center gap-1">
               <span className="font-['Inter'] font-bold text-[32px] md:text-[40px] text-[#00A63E] leading-none">{value}</span>
-              <span className="font-['Inter'] text-[14px] text-[#4A5565] mt-1">{label}</span>
+              <span className="font-['Inter'] text-[13px] text-[#4A5565] mt-1">{label}</span>
             </div>
           ))}
         </div>
@@ -219,13 +214,10 @@ export default function OpdIpdPage() {
           <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-white mb-4">
             See OPD &amp; IPD management live
           </h2>
-          <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
+          <p className="font-['Inter'] text-[15px] leading-[26px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
             We&apos;ll walk you through the complete patient journey — registration, Vaidya Mode, IPD admission, and discharge — in one demo.
           </p>
-          <button
-            onClick={openModal}
-            className="px-8 py-4 bg-white text-[#00A63E] font-['Inter'] font-semibold text-[16px] rounded-xl hover:bg-[#f0faf4] transition-colors shadow-md mb-6"
-          >
+          <button onClick={openModal} className="border-2 border-white text-white bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-white hover:text-[#003d1a] transition-all duration-300 hover:scale-105 active:scale-95 mb-6">
             Book Free Demo →
           </button>
           <div>

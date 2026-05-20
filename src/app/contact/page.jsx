@@ -67,7 +67,7 @@ export default function ContactPage() {
           <p className="font-['Inter'] font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
             Book a demo, ask about pricing, or just say hello.<br className="hidden md:block" /> Our team responds within one business day.
           </p>
-          <button onClick={() => setDemoOpen(true)} className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-['Inter'] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl">
+          <button onClick={() => setDemoOpen(true)} className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-['Inter'] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95">
             Book Free Demo →
           </button>
         </div>
@@ -283,7 +283,7 @@ export default function ContactPage() {
           </p>
           <button
             onClick={() => setDemoOpen(true)}
-            className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-['Inter'] font-medium text-[16px] text-white px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-md"
+            className="border-2 border-white text-white bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-white hover:text-[#003d1a] transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Book Free Demo →
           </button>

@@ -67,10 +67,10 @@ export default function VaidyaModePage() {
           <h1 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[52px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-[#101828] mb-[20px]">
             Vaidya Mode — Complete Consultation<br className="hidden md:block" /> Without Front Office
           </h1>
-          <p className="font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
+          <p className="ayup-section-sub font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
             The only Ayurvedic HMS with a dedicated doctor-first workflow.<br className="hidden md:block" /> From patient arrival to prescription — everything in one screen, no support staff required.
           </p>
-          <button onClick={openModal} className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-white px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:scale-105 transition-transform duration-300 active:scale-95 shadow-lg hover:shadow-xl">
+          <button onClick={openModal} className="border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95">
             Book Free Demo →
           </button>
         </div>
@@ -84,7 +84,7 @@ export default function VaidyaModePage() {
               <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[26px] md:text-[40px] leading-[34px] md:leading-[52px] text-[#101828] mb-5">
                 Built for the independent Vaidya
               </h2>
-              <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] md:leading-[32px] text-[#4A5565]">
+              <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] md:leading-[32px] text-[#4A5565]">
                 In most hospitals, doctors depend on front-office staff to register patients, enter vitals, and pull up history before a consultation can begin. Vaidya Mode eliminates that dependency. A doctor can walk into their consultation room, open AyuPlus, and manage the entire patient encounter themselves — from first registration to final prescription.
               </p>
             </div>
@@ -104,26 +104,21 @@ export default function VaidyaModePage() {
             <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-[#101828] mb-3">
               Everything in one consultation screen
             </h2>
-            <p className="font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565]">
+            <p className="ayup-section-sub font-['Inter'] text-[16px] md:text-[18px] leading-[28px] text-[#4A5565]">
               All 11 clinical components — structured, linked, and printable.
             </p>
           </div>
-          <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
+          <div className="ayup-grid-4">
             {FEATURES.map((f) => (
-              <div key={f.title} className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
-                <div className="p-8 flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-8">
+              <div key={f.title} className="ayup-card bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-[#f0faf4] flex items-center justify-center text-[20px] flex-shrink-0">
                       {f.icon}
                     </div>
-                    <h3 className="font-['Inter'] font-bold text-[20px] leading-snug text-[#101828]">{f.title}</h3>
+                    <h3 className="font-['Inter'] font-semibold text-[15px] leading-snug text-[#003d1a]">{f.title}</h3>
                   </div>
-                  <ul className="space-y-5">
-                    <li className="flex items-start gap-3">
-                      <CheckIcon />
-                      <span className="font-['Inter'] font-semibold text-[16px] leading-[26px] tracking-[-0.44px] text-[#101828]">{f.desc}</span>
-                    </li>
-                  </ul>
+                  <p className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#5a7a65]">{f.desc}</p>
                 </div>
               </div>
             ))}
@@ -141,7 +136,7 @@ export default function VaidyaModePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-[#fff5f5] border-l-4 border-red-400 rounded-2xl p-8">
-              <p className="font-['Inter'] font-bold text-[16px] text-red-500 mb-6">❌ Without Vaidya Mode</p>
+              <p className="font-['Inter'] font-bold text-[14px] text-red-500 mb-6">❌ Without Vaidya Mode</p>
               <ul className="space-y-4">
                 {BEFORE.map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -150,18 +145,18 @@ export default function VaidyaModePage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </div>
-                    <span className="font-['Inter'] text-[15px] leading-[24px] text-[#374151]">{item}</span>
+                    <span className="font-['Inter'] text-[13px] leading-[20px] text-[#374151]">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="bg-[#f0faf4] border-l-4 border-[#00A63E] rounded-2xl p-8">
-              <p className="font-['Inter'] font-bold text-[16px] text-[#00A63E] mb-6">✅ With Vaidya Mode</p>
+              <p className="font-['Inter'] font-bold text-[14px] text-[#00A63E] mb-6">✅ With Vaidya Mode</p>
               <ul className="space-y-4">
                 {AFTER.map((item) => (
                   <li key={item} className="flex items-start gap-3 group">
                     <CheckIcon />
-                    <span className="font-['Inter'] font-semibold text-[15px] leading-[24px] text-[#101828]">{item}</span>
+                    <span className="font-['Inter'] font-normal text-[13px] leading-[20px] text-[#101828]">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -178,12 +173,12 @@ export default function VaidyaModePage() {
               Who uses Vaidya Mode?
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="ayup-grid-3">
             {WHO.map((w) => (
-              <div key={w.title} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 text-center hover:shadow-md transition-shadow">
+              <div key={w.title} className="ayup-card bg-white rounded-2xl border border-gray-100 shadow-sm p-7 text-center hover:shadow-md transition-shadow">
                 <div className="text-[38px] mb-4">{w.icon}</div>
-                <h3 className="font-['Inter'] font-bold text-[17px] text-[#101828] mb-2">{w.title}</h3>
-                <p className="font-['Inter'] text-[14px] leading-[22px] text-[#4A5565]">{w.desc}</p>
+                <h3 className="font-['Inter'] font-semibold text-[15px] text-[#003d1a] mb-2">{w.title}</h3>
+                <p className="font-['Inter'] text-[13px] leading-[20px] text-[#5a7a65]">{w.desc}</p>
               </div>
             ))}
           </div>
@@ -217,10 +212,10 @@ export default function VaidyaModePage() {
           <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[42px] text-white mb-4">
             See Vaidya Mode live in a 20-minute demo
           </h2>
-          <p className="font-['Inter'] text-[16px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
+          <p className="font-['Inter'] text-[15px] text-[#bbf7d0] mb-8 max-w-xl mx-auto">
             We&apos;ll walk through the complete consultation workflow — patient search, Asta Sthana Pariksha, prescription, and print.
           </p>
-          <button onClick={openModal} className="bg-[linear-gradient(180deg,_#69B109_0%,_#5A9A04_100%)] font-['Inter'] font-medium text-[16px] text-white px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg mb-6">
+          <button onClick={openModal} className="border-2 border-white text-white bg-transparent font-['Inter'] font-medium text-[16px] px-8 py-4 rounded-[8px] cursor-pointer hover:bg-white hover:text-[#003d1a] transition-all duration-300 hover:scale-105 active:scale-95 mb-6">
             Book Free Demo →
           </button>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-2">
