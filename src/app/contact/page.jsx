@@ -73,6 +73,23 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Feature Strip */}
+      <section style={{ background: "#f0faf4", borderTop: "1px solid #d8ede0", borderBottom: "1px solid #d8ede0", padding: "16px 5%" }}>
+        <div className="ayup-feature-strip" style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
+          {[
+            { emoji: "📞", label: "Reply Within 24 Hours" },
+            { emoji: "💬", label: "WhatsApp Support" },
+            { emoji: "🌐", label: "Malayalam · Tamil · Hindi · English" },
+            { emoji: "📍", label: "Puducherry, India" },
+          ].map((item, i, arr) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44", whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: "15px" }}>{item.emoji}</span>
+              {item.label}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Main content */}
       <section className="bg-[#FAFAFA] py-[60px] md:py-[80px]">
         <div className="container-1280 w-full px-4">

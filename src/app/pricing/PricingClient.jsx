@@ -233,6 +233,23 @@ export default function PricingClient() {
         </div>
       </section>
 
+      {/* Feature Strip */}
+      <section style={{ background: "#f0faf4", borderTop: "1px solid #d8ede0", borderBottom: "1px solid #d8ede0", padding: "16px 5%" }}>
+        <div className="ayup-feature-strip" style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
+          {[
+            { emoji: "✅", label: "No Long-term Contract" },
+            { emoji: "🎓", label: "Setup & Training Included" },
+            { emoji: "☁️", label: "Cloud or On-premises" },
+            { emoji: "💬", label: "Local Language Support" },
+          ].map((item, i, arr) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44", whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: "15px" }}>{item.emoji}</span>
+              {item.label}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Billing toggle */}
       <div style={{ background: "#fff", padding: "24px 5%", display: "flex", justifyContent: "center" }}>
         <div style={{ display: "flex", gap: "8px", background: "#f7faf8", padding: "4px", borderRadius: "50px", border: "1px solid #c8dace" }}>

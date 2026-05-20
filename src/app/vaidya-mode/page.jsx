@@ -76,6 +76,23 @@ export default function VaidyaModePage() {
         </div>
       </section>
 
+      {/* Feature Strip */}
+      <section style={{ background: "#f0faf4", borderTop: "1px solid #d8ede0", borderBottom: "1px solid #d8ede0", padding: "16px 5%" }}>
+        <div className="ayup-feature-strip" style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
+          {[
+            { emoji: "🩺", label: "Complete Consultation Screen" },
+            { emoji: "🌿", label: "Asta Sthana Pariksha Built-in" },
+            { emoji: "💊", label: "Ayurvedic Medicine Database" },
+            { emoji: "🖨️", label: "One-click Print & Submit" },
+          ].map((item, i, arr) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44", whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: "15px" }}>{item.emoji}</span>
+              {item.label}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* What is Vaidya Mode — 2-col */}
       <section className="w-full flex justify-center bg-white">
         <div className="container-1280 w-full py-[60px] md:py-[80px] px-4">

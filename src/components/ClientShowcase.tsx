@@ -1,12 +1,5 @@
 "use client";
 
-const OPD_PATIENTS = [
-  { id: "OPD1001", name: "Devi Sridhar" },
-  { id: "OPD1002", name: "Fatima Rehmat" },
-  { id: "OPD1003", name: "Arokiyasamy" },
-  { id: "OPD1004", name: "Kathirvelan" },
-];
-
 export default function ClientShowcase() {
   return (
     <section style={{
@@ -39,13 +32,13 @@ export default function ClientShowcase() {
         gap: "32px",
         flexWrap: "wrap",
         justifyContent: "center",
-        maxWidth: "820px",
+        maxWidth: "860px",
         margin: "0 auto",
         width: "100%",
       }}>
 
-        {/* Left: logo + info */}
-        <div style={{ display: "flex", alignItems: "flex-start", gap: "20px", flex: "1 1 260px", minWidth: "220px" }}>
+        {/* Left: logo + hospital info */}
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "20px", flex: "1 1 220px", minWidth: "200px" }}>
           <img
             src="/images/hari_logo.png"
             alt="Hari Ashtanga Ayurveda Chikitsalaya logo"
@@ -85,75 +78,56 @@ export default function ClientShowcase() {
             <p style={{ fontSize: "12px", color: "#3a6b48", fontWeight: 600 }}>
               📍 Moolakulam, Puducherry
             </p>
+            <div style={{ marginTop: "14px", display: "inline-flex", alignItems: "center", gap: "6px", background: "#003d1a", color: "#fff", borderRadius: "20px", padding: "5px 12px" }}>
+              <span style={{ fontWeight: 700, fontSize: "13px" }}>14,700+</span>
+              <span style={{ fontSize: "11px", color: "#86efac" }}>patient records</span>
+            </div>
           </div>
         </div>
 
-        {/* Right: OPD patient list mini-preview */}
+        {/* Right: testimonial quote */}
         <div style={{
-          flex: "1 1 260px",
-          minWidth: "240px",
+          flex: "1 1 300px",
+          minWidth: "260px",
           background: "#fff",
           borderRadius: "14px",
           border: "1px solid #e8f0ea",
-          overflow: "hidden",
+          padding: "22px 24px",
           boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+          position: "relative",
         }}>
-          {/* Header */}
-          <div style={{ padding: "14px 18px 10px", borderBottom: "1px solid #f0f0f0" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div>
-                <p style={{ fontSize: "14px", fontWeight: 700, color: "#101828", margin: 0 }}>OPD Patient List</p>
-                <p style={{ fontSize: "11px", color: "#6B7280", margin: "2px 0 0" }}>Today&apos;s registrations</p>
-              </div>
-              <span style={{
-                background: "#00A63E",
-                color: "#fff",
-                fontSize: "11px",
-                fontWeight: 600,
-                padding: "4px 10px",
-                borderRadius: "6px",
-              }}>Add Patient</span>
-            </div>
-          </div>
-
-          {/* Table header */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.2fr 80px",
-            padding: "8px 18px",
-            borderBottom: "1px solid #f5f5f5",
-            background: "#fafafa",
-          }}>
-            {["Patient ID", "Name", "Status"].map((h) => (
-              <span key={h} style={{ fontSize: "11px", fontWeight: 600, color: "#9CA3AF" }}>{h}</span>
+          {/* Stars */}
+          <div style={{ display: "flex", gap: "2px", marginBottom: "12px" }}>
+            {[0,1,2,3,4].map((i) => (
+              <span key={i} style={{ color: "#00A63E", fontSize: "14px", lineHeight: 1 }}>★</span>
             ))}
           </div>
 
-          {/* Rows */}
-          {OPD_PATIENTS.map((p, i) => (
-            <div key={p.id} style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1.2fr 80px",
-              padding: "10px 18px",
-              alignItems: "center",
-              borderBottom: i < OPD_PATIENTS.length - 1 ? "1px solid #f5f5f5" : "none",
-              background: "#fff",
-            }}>
-              <span style={{ fontSize: "12px", fontWeight: 700, color: "#101828" }}>{p.id}</span>
-              <span style={{ fontSize: "12px", color: "#374151" }}>{p.name}</span>
-              <span style={{
-                display: "inline-block",
-                fontSize: "10px",
-                fontWeight: 600,
-                color: "#00A63E",
-                background: "#f0faf4",
-                border: "1px solid #bbf7d0",
-                padding: "3px 8px",
-                borderRadius: "6px",
-                whiteSpace: "nowrap",
-              }}>Consulted</span>
-            </div>
-          ))}
+          {/* Quote paragraphs */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "16px" }}>
+            <p style={{ fontSize: "12px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+              Panchakarma records on paper — day-wise Snehapana, Vamanam, Vasthi — all handwritten. At follow-up, we were often reconstructing from memory. That&apos;s not how a serious practice should run.
+            </p>
+            <p style={{ fontSize: "12px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+              With Varma and Shalyatantra alongside OPD, our workflows are more layered than a general clinic. AyuPlus was the first system that understood that — Prakruti, Asta Sthana Pariksha, Dosha evaluation all live inside the patient record where they belong. Vaidya Mode lets me complete the full consultation without depending on the front desk.
+            </p>
+            <p style={{ fontSize: "12px", lineHeight: 1.7, color: "#374151", margin: 0 }}>
+              Billing gaps are gone. Panchakarma sessions now tie directly to invoices. We&apos;ve crossed 14,700+ patient records and the team onboarded us in Tamil with no friction.
+            </p>
+            <p style={{ fontSize: "12px", lineHeight: 1.7, color: "#003d1a", fontWeight: 700, margin: 0 }}>
+              For any Ayurvedic hospital serious about clinical documentation — this is it.
+            </p>
+          </div>
+
+          {/* Attribution */}
+          <div style={{ borderTop: "1px solid #e8f0ea", paddingTop: "12px" }}>
+            <p style={{ fontSize: "12px", fontWeight: 700, color: "#101828", margin: 0 }}>
+              — Dr. N. Jeeva Anand, BAMS
+            </p>
+            <p style={{ fontSize: "11px", color: "#00A63E", fontWeight: 600, marginTop: "2px" }}>
+              Hari Ashtanga Ayurveda Chikitsalaya
+            </p>
+          </div>
         </div>
 
       </div>

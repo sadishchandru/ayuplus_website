@@ -174,12 +174,22 @@ export default function CaseSheetsPage() {
         </div>
       </section>
 
-      {/* Intro Strip */}
-      <div className="w-full bg-[#f0faf4] py-[14px] flex justify-center border-b border-[#BBF7D0]">
-        <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] text-center px-4">
-          9 Case Sheets &nbsp;·&nbsp; Fully Digital &nbsp;·&nbsp; Printable Reports &nbsp;·&nbsp; Linked to Patient OPNo
-        </p>
-      </div>
+      {/* Feature Strip */}
+      <section style={{ background: "#f0faf4", borderTop: "1px solid #d8ede0", borderBottom: "1px solid #d8ede0", padding: "16px 5%" }}>
+        <div className="ayup-feature-strip" style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
+          {[
+            { emoji: "📋", label: "9 Clinical Case Sheets" },
+            { emoji: "🔗", label: "Linked to Patient OPNo" },
+            { emoji: "✏️", label: "Editable Anytime" },
+            { emoji: "🖨️", label: "Printable Reports" },
+          ].map((item, i, arr) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44", whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: "15px" }}>{item.emoji}</span>
+              {item.label}
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Case Sheet Cards Grid */}
       <section className="w-full flex justify-center bg-white">

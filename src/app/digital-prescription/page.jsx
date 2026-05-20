@@ -96,14 +96,20 @@ export default function DigitalPrescriptionPage() {
         </div>
       </section>
 
-      {/* 2. Tablet strip */}
-      <section className="w-full bg-[#f0faf4] border-y border-[#BBF7D0] py-5 px-4">
-        <div className="container-1280 mx-auto">
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            {["📱 iPad & Tablet Optimised", "🖥️ Works on Desktop", "👨‍⚕️ Solo Doctor Workflow", "📤 Digital Prescription to Patient"].map((pill) => (
-              <span key={pill} className="font-['Inter'] font-medium text-[13px] text-[#101828]">{pill}</span>
-            ))}
-          </div>
+      {/* Feature Strip */}
+      <section style={{ background: "#f0faf4", borderTop: "1px solid #d8ede0", borderBottom: "1px solid #d8ede0", padding: "16px 5%" }}>
+        <div className="ayup-feature-strip" style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
+          {[
+            { emoji: "📱", label: "iPad & Tablet Optimised" },
+            { emoji: "🖥️", label: "Works on Desktop" },
+            { emoji: "👨‍⚕️", label: "Solo Doctor Workflow" },
+            { emoji: "📤", label: "Digital Prescription to Patient" },
+          ].map((item, i, arr) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44", whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: "15px" }}>{item.emoji}</span>
+              {item.label}
+            </div>
+          ))}
         </div>
       </section>
 

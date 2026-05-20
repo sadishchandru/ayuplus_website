@@ -205,3 +205,18 @@ html {
     padding: 14px 20px !important;
   }
 }
+
+/* ── Feature strip responsive ─────────────────────────────────────── */
+@media (max-width: 480px) {
+  .ayup-feature-strip {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    text-align: center;
+  }
+  .ayup-feature-strip > div {
+    border-right: none !important;
+    justify-content: center;
+    font-size: 12px !important;
+  }
+}
