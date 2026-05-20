@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "/digital-prescription", label: "Prescription Pad" },
   { href: "/case-sheets", label: "Case Sheets" },
   { href: "/billing", label: "Billing" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/hospital-settings", label: "Settings" },
   { href: "/contact", label: "Contact" },
 ];
