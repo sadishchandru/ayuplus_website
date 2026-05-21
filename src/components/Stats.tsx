@@ -36,12 +36,13 @@ const Stats = () => {
                     {stats.map((stat, idx) => (
                         <FadeIn key={idx} delay={400 + (idx * 100)}>
                             <div className="flex flex-col items-center group">
-                                <CountUp
-                                    end={stat.value}
-                                    suffix={stat.suffix}
-                                    className="font-['Inter'] font-bold leading-none tracking-[0.12px] text-center text-[#00A63E]"
-                                    style={{ fontSize: "clamp(32px, 6vw, 52px)" } as React.CSSProperties}
-                                />
+                                <span style={{ fontSize: "clamp(32px, 6vw, 52px)", display: "block" }}>
+                                    <CountUp
+                                        end={stat.value}
+                                        suffix={stat.suffix}
+                                        className="font-['Inter'] font-bold leading-none tracking-[0.12px] text-center text-[#00A63E]"
+                                    />
+                                </span>
                                 <span className="font-['Inter'] font-normal text-[16px] md:text-[18px] leading-[28px] tracking-[-0.44px] text-center text-[#4A5565] mt-[12px] mb-[20px] md:mb-[40px]">
                                     {stat.label}
                                 </span>
