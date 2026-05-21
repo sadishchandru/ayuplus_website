@@ -77,17 +77,17 @@ export default function VaidyaModePage() {
       </section>
 
       {/* Feature Strip */}
-      <section style={{ background: "#f0faf4", borderTop: "1px solid #d8ede0", borderBottom: "1px solid #d8ede0", padding: "16px 5%" }}>
-        <div className="ayup-feature-strip" style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
+      <section className="ayup-strip-section" style={{ background: "#f0faf4", borderTop: "1px solid #d8ede0", borderBottom: "1px solid #d8ede0", padding: "16px 5%" }}>
+        <div className="ayup-feature-strip" style={{ maxWidth: "1100px", margin: "0 auto", width: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
           {[
             { emoji: "🩺", label: "Complete Consultation Screen" },
             { emoji: "🌿", label: "Asta Sthana Pariksha Built-in" },
             { emoji: "💊", label: "Ayurvedic Medicine Database" },
             { emoji: "🖨️", label: "One-click Print & Submit" },
           ].map((item, i, arr) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44", whiteSpace: "nowrap" }}>
-              <span style={{ fontSize: "15px" }}>{item.emoji}</span>
-              {item.label}
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", minWidth: 0, overflow: "hidden" }}>
+              <span className="strip-emoji" style={{ fontSize: "15px", flexShrink: 0, lineHeight: 1, display: "inline-block", minWidth: "22px" }}>{item.emoji}</span>
+              <span className="strip-label" style={{ fontSize: "13px", fontWeight: 600, color: "#2d6e44", lineHeight: 1.35, whiteSpace: "normal", wordBreak: "break-word" }}>{item.label}</span>
             </div>
           ))}
         </div>

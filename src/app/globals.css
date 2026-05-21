@@ -259,15 +259,46 @@ h1, h2, h3 { word-break: break-word; }
 
 /* ── Feature strip responsive ─────────────────────────────────────── */
 @media (max-width: 480px) {
+  .ayup-strip-section {
+    padding: 16px 16px !important;
+  }
   .ayup-feature-strip {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-    text-align: center;
+    gap: 12px 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   .ayup-feature-strip > div {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     border-right: none !important;
-    justify-content: center;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    white-space: normal !important;
+    padding: 6px 8px !important;
+    gap: 8px !important;
+  }
+  .ayup-feature-strip .strip-emoji {
+    flex-shrink: 0 !important;
+    min-width: 20px !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+  }
+  .ayup-feature-strip .strip-label {
     font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #1a6b3a !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
   }
 }
