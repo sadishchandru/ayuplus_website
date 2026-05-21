@@ -13,17 +13,27 @@ const STATS = [
 export function SocialProofBar() {
   return (
     <section className="w-full bg-[#f0faf4] border-y border-[#BBF7D0] flex justify-center py-[18px] md:py-[22px]">
-      <div className="container-1280 w-full flex flex-wrap justify-center md:justify-between items-center gap-x-8 gap-y-6">
-        {STATS.map(({ value, label }) => (
-          <div key={label} className="flex flex-col items-center gap-1">
-            <span className="font-['Inter'] font-bold text-[22px] md:text-[28px] text-[#00A63E] leading-none">
-              {value}
-            </span>
-            <span className="font-['Inter'] text-[12px] md:text-[13px] text-[#4A5565] leading-tight text-center">
-              {label}
-            </span>
-          </div>
-        ))}
+      <div className="container-1280 w-full px-4">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px 8px", justifyItems: "center" }}
+             className="spb-grid">
+          {STATS.map(({ value, label }) => (
+            <div key={label} className="flex flex-col items-center gap-1" style={{ minWidth: 0 }}>
+              <span className="font-['Inter'] font-bold text-[#00A63E] leading-none"
+                    style={{ fontSize: "clamp(18px, 3.5vw, 28px)" }}>
+                {value}
+              </span>
+              <span className="font-['Inter'] text-[#4A5565] leading-tight text-center"
+                    style={{ fontSize: "clamp(11px, 1.3vw, 13px)" }}>
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+        <style>{`
+          @media (min-width: 640px) {
+            .spb-grid { grid-template-columns: repeat(5, 1fr) !important; gap: 8px !important; }
+          }
+        `}</style>
       </div>
     </section>
   );
@@ -53,29 +63,34 @@ const PAIN_POINTS = [
 export function PainPointsSection() {
   return (
     <div className="w-full flex justify-center bg-[#FAFAFA]">
-      <div className="container-1280 flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 py-[40px] md:py-[70px]">
+      <div className="container-1280 flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 px-4"
+           style={{ padding: "48px 5%" }}>
 
         {/* Left: text + checklist */}
-        <div className="flex-1 max-w-xl">
-          <h3 className="font-['Inter'] font-bold text-[24px] md:text-[38px] leading-[30px] md:leading-[48px] tracking-[0.35px] text-[#101828] mb-[16px] md:mb-[24px] mt-0 md:mt-[-25px]">
+        <div className="flex-1 w-full" style={{ maxWidth: "580px" }}>
+          <h3 className="font-['Inter'] font-bold leading-[1.3] tracking-[0.35px] text-[#101828] mb-[16px] md:mb-[24px]"
+              style={{ fontSize: "clamp(20px, 3.5vw, 38px)", wordBreak: "break-word" }}>
             Generic HMS software wasn't built for Ayurveda
           </h3>
-          <p className="font-['Inter'] font-normal text-[16px] md:text-[18px] leading-[24px] md:leading-[32.5px] tracking-[-0.45px] text-[#4A5565] mb-[24px]">
+          <p className="font-['Inter'] font-normal leading-[1.65] tracking-[-0.45px] text-[#4A5565] mb-[24px]"
+             style={{ fontSize: "clamp(14px, 1.8vw, 18px)" }}>
             Most hospital software is adapted from generic tools. Ayuplus was built ground-up for Ayurvedic workflows — the problems below are exactly what it was designed to eliminate.
           </p>
-          <ul className="space-y-6">
+          <ul className="space-y-5">
             {PAIN_POINTS.map(({ title, description }) => (
               <li key={title} className="flex items-start group">
-                <div className="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#00A63E] flex items-center justify-center mr-[12px] border border-[#00A63E] mt-1">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#00A63E] flex items-center justify-center mr-[12px] border border-[#00A63E] mt-1">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <span className="font-['Inter'] font-semibold text-[18px] leading-[28px] tracking-[-0.44px] text-[#101828]">
+                  <span className="font-['Inter'] font-semibold text-[#101828]"
+                        style={{ fontSize: "clamp(14px, 1.6vw, 18px)", lineHeight: "1.5" }}>
                     {title}
                   </span>
-                  <p className="font-['Inter'] font-normal text-[16px] leading-[24px] tracking-[-0.31px] text-[#4A5565]">
+                  <p className="font-['Inter'] font-normal text-[#4A5565] mt-1"
+                     style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.6" }}>
                     {description}
                   </p>
                 </div>
@@ -86,9 +101,11 @@ export function PainPointsSection() {
 
         {/* Right: stat card */}
         <div className="flex-1 w-full relative">
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 md:p-10 space-y-6">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm space-y-6"
+               style={{ padding: "clamp(20px, 4vw, 40px)" }}>
             <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] uppercase tracking-widest">The Problem</p>
-            <p className="font-['Hedvig_Letters_Serif'] font-normal text-[22px] md:text-[28px] leading-[32px] md:leading-[38px] text-[#101828]">
+            <p className="font-['Hedvig_Letters_Serif'] font-normal text-[#101828]"
+               style={{ fontSize: "clamp(18px, 2.8vw, 28px)", lineHeight: "1.4" }}>
               Ayurvedic hospitals lose time and revenue every day to software that doesn't understand their workflows.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-2">
@@ -99,7 +116,8 @@ export function PainPointsSection() {
                 { value: "36+", label: "Clinical screens" },
               ].map(({ value, label }) => (
                 <div key={label} className="bg-[#f0faf4] rounded-xl p-4">
-                  <p className="font-['Inter'] font-bold text-[26px] text-[#00A63E] leading-none mb-1">{value}</p>
+                  <p className="font-['Inter'] font-bold text-[#00A63E] leading-none mb-1"
+                     style={{ fontSize: "clamp(20px, 3vw, 26px)" }}>{value}</p>
                   <p className="font-['Inter'] text-[12px] text-[#4A5565]">{label}</p>
                 </div>
               ))}
@@ -209,30 +227,34 @@ const PERKS = [
 
 export function LeadSection({ onOpenModal }) {
   return (
-    <section className="w-full flex justify-center py-[50px] md:py-[80px]" style={{ background: "linear-gradient(135deg, #003d1a 0%, #005c28 100%)" }}>
+    <section className="w-full flex justify-center" style={{ background: "linear-gradient(135deg, #003d1a 0%, #005c28 100%)", padding: "48px 5%" }}>
       <div className="container-1280 w-full">
 
         {/* Top: merged CTA heading */}
-        <div className="text-center mb-[48px] md:mb-[64px]">
-          <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[48px] leading-[36px] md:leading-[58px] tracking-[0.12px] text-white mb-[16px]">
+        <div className="text-center mb-[40px] md:mb-[56px]">
+          <h2 className="font-['Hedvig_Letters_Serif'] font-normal tracking-[0.12px] text-white mb-[16px]"
+              style={{ fontSize: "clamp(24px, 5vw, 48px)", lineHeight: "1.25", wordBreak: "break-word" }}>
             Start digitizing your hospital today
           </h2>
-          <p className="font-['Inter'] font-normal text-[16px] md:text-[20px] leading-[28px] md:leading-[36px] tracking-[0.07px] text-[#bbf7d0] max-w-2xl mx-auto">
+          <p className="font-['Inter'] font-normal text-[#bbf7d0] max-w-2xl mx-auto"
+             style={{ fontSize: "clamp(14px, 2vw, 20px)", lineHeight: "1.7" }}>
             See the complete Ayuplus platform in action with a personalised demo for your hospital.
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-12 items-start">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
 
           {/* Left: perks */}
-          <div className="flex-1">
+          <div className="flex-1 w-full">
             <span className="inline-block font-['Inter'] text-[13px] font-semibold text-[#86efac] uppercase tracking-widest mb-4">
               Book a Demo
             </span>
-            <h3 className="font-['Hedvig_Letters_Serif'] font-normal text-[24px] md:text-[36px] leading-[32px] md:leading-[46px] tracking-[0.12px] text-white mb-4">
+            <h3 className="font-['Hedvig_Letters_Serif'] font-normal tracking-[0.12px] text-white mb-4"
+                style={{ fontSize: "clamp(20px, 3.5vw, 36px)", lineHeight: "1.3", wordBreak: "break-word" }}>
               See Ayuplus in action at your hospital
             </h3>
-            <p className="font-['Inter'] text-[16px] text-[#bbf7d0] mb-10 max-w-md">
+            <p className="font-['Inter'] text-[#bbf7d0] mb-8 max-w-md"
+               style={{ fontSize: "clamp(14px, 1.6vw, 16px)", lineHeight: "1.7" }}>
               A live demo, configured for your workflows — not a generic product tour.
             </p>
 
@@ -253,7 +275,7 @@ export function LeadSection({ onOpenModal }) {
 
           {/* Right: CTA card */}
           <div className="flex-shrink-0 w-full md:w-[340px]">
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
+            <div className="bg-white rounded-2xl shadow-xl" style={{ padding: "clamp(20px, 4vw, 32px)" }}>
               <h3 className="font-['Hedvig_Letters_Serif'] font-normal text-[22px] text-[#101828] mb-2">
                 Ready to see it live?
               </h3>

@@ -48,7 +48,8 @@ export default function FAQ() {
           <Image src="/images/leaf.svg" alt="Leaf" width={55} height={25} className="h-auto" />
         </div>
 
-        <h2 className="font-['Hedvig_Letters_Serif'] font-normal text-[24px] md:text-[32px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-center text-[#101828] mb-[32px] md:mb-[48px]">
+        <h2 className="font-['Hedvig_Letters_Serif'] font-normal tracking-[0.12px] text-center text-[#101828] mb-[32px] md:mb-[48px]"
+            style={{ fontSize: "clamp(22px, 4vw, 36px)", lineHeight: "1.3", wordBreak: "break-word" }}>
           Frequently Asked Questions
         </h2>
 
@@ -62,7 +63,8 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between gap-4 py-4 text-left group"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-['Inter'] font-medium text-[15px] md:text-[17px] leading-[26px] text-[#101828] group-hover:text-[#00A63E] transition-colors">
+                  <span className="font-['Inter'] font-medium text-[#101828] group-hover:text-[#00A63E] transition-colors"
+                        style={{ fontSize: "clamp(14px, 1.8vw, 17px)", lineHeight: "1.6" }}>
                     {faq.q}
                   </span>
                   <span className={`flex-shrink-0 w-6 h-6 rounded-full border border-[#DBDBDB] flex items-center justify-center transition-transform duration-200 ${isOpen ? "rotate-45 bg-[#00A63E] border-[#00A63E]" : "bg-white"}`}>

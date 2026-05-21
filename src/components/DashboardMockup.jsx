@@ -14,7 +14,7 @@ export default function DashboardMockup({
 
       {/* Browser chrome — only when showChrome=true */}
       {showChrome && (
-        <div style={{
+        <div className="mockup-chrome" style={{
           background: "#1e1e1e",
           borderRadius: "12px 12px 0 0",
           padding: "10px 16px",
@@ -22,18 +22,19 @@ export default function DashboardMockup({
           alignItems: "center",
           gap: "8px",
         }}>
-          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57", display: "inline-block", flexShrink: 0 }} />
-          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e", display: "inline-block", flexShrink: 0 }} />
-          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840", display: "inline-block", flexShrink: 0 }} />
+          <span className="mockup-dot" style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57", display: "inline-block", flexShrink: 0 }} />
+          <span className="mockup-dot" style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e", display: "inline-block", flexShrink: 0 }} />
+          <span className="mockup-dot" style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840", display: "inline-block", flexShrink: 0 }} />
           <div className="mockup-url-bar" style={{
             flex: 1, background: "#2d2d2d", borderRadius: "6px",
             padding: "4px 12px", marginLeft: "8px", fontSize: "12px",
             color: "#888", display: "flex", alignItems: "center", gap: "6px",
+            overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis",
           }}>
             <svg width="10" height="10" viewBox="0 0 24 24" fill="#888" style={{ flexShrink: 0 }}>
               <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
             </svg>
-            {urlBar}
+            <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{urlBar}</span>
           </div>
         </div>
       )}
@@ -82,7 +83,7 @@ export default function DashboardMockup({
 
         {/* Floating badge */}
         {badge && (
-          <div style={{
+          <div className="mockup-badge" style={{
             position: "absolute",
             bottom: "20px",
             left: "50%",
@@ -118,10 +119,17 @@ export default function DashboardMockup({
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(1.3); }
         }
-        @media (max-width: 768px) {
-          .mockup-height { height: 240px !important; }
+        @media (max-width: 480px) {
+          .mockup-height { height: 200px !important; }
           .mockup-url-bar { display: none !important; }
-          .mockup-fade { height: 90px !important; }
+          .mockup-chrome { display: none !important; }
+          .mockup-fade { height: 80px !important; }
+          .mockup-badge { font-size: 11px !important; padding: 6px 14px !important; }
+          .mockup-dot { width: 8px !important; height: 8px !important; }
+        }
+        @media (min-width: 481px) and (max-width: 768px) {
+          .mockup-height { height: 300px !important; }
+          .mockup-fade { height: 100px !important; }
         }
       `}</style>
     </div>

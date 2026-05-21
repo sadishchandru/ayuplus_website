@@ -4,23 +4,24 @@ export default function ClientShowcase() {
   return (
     <section style={{
       background: "white",
+      width: "100%",
       padding: "60px 5%",
       borderBottom: "1px solid #e8f0ea",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
+      boxSizing: "border-box",
     }}>
-      <p style={{
-        fontSize: "12px",
-        color: "#4a6654",
-        fontWeight: 700,
-        letterSpacing: "0.1em",
-        textTransform: "uppercase",
-        marginBottom: "40px",
-        textAlign: "center",
-      }}>
-        Trusted by Ayurvedic hospitals across India
-      </p>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        <p style={{
+          fontSize: "13px",
+          color: "#4a6654",
+          fontWeight: 600,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          marginBottom: "32px",
+          textAlign: "center",
+          width: "100%",
+        }}>
+          Trusted by Ayurvedic hospitals across India
+        </p>
 
       <div style={{
         border: "1px solid #c8e6d0",
@@ -35,6 +36,7 @@ export default function ClientShowcase() {
         maxWidth: "860px",
         margin: "0 auto",
         width: "100%",
+        boxSizing: "border-box",
       }}>
 
         {/* Left: logo + hospital info */}
@@ -136,6 +138,15 @@ export default function ClientShowcase() {
         Interested in becoming a featured client?{" "}
         <a href="/contact" style={{ color: "#00A63E", fontWeight: 600 }}>Contact us →</a>
       </p>
+      </div>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .client-showcase-section { padding: 40px 20px !important; }
+          .client-card { padding: 20px !important; }
+          .client-logo { width: 64px !important; height: 64px !important; }
+        }
+      `}</style>
     </section>
   );
 }

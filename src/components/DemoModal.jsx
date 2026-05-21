@@ -70,12 +70,21 @@ export default function DemoModal({ isOpen, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm demo-modal-backdrop"
+      style={{ display: "flex", alignItems: "flex-end", justifyContent: "center" }}
       onClick={(e) => e.target === e.currentTarget && handleClose()}
     >
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-white shadow-2xl w-full demo-modal-sheet"
+           style={{ maxWidth: "520px", borderRadius: "20px 20px 0 0", maxHeight: "92vh", overflowY: "auto" }}>
+        <style>{`
+          @media (min-width: 481px) {
+            .demo-modal-backdrop { align-items: center !important; padding: 16px; }
+            .demo-modal-sheet { border-radius: 20px !important; max-height: 90vh !important; }
+          }
+        `}</style>
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-start justify-between rounded-t-2xl z-10">
+        <div className="sticky top-0 bg-white border-b border-gray-100 flex items-start justify-between z-10"
+             style={{ padding: "20px 20px 16px", borderRadius: "20px 20px 0 0" }}>
           <div>
             <h2 className="font-['Inter'] font-semibold text-[20px] leading-[28px] text-[#101828]">
               Request a Hospital Demo
@@ -94,7 +103,7 @@ export default function DemoModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        <div className="px-6 py-5">
+        <div style={{ padding: "20px" }}>
           {success ? (
             <div className="flex flex-col items-center text-center py-8">
               <div className="w-16 h-16 rounded-full bg-[#00A63E]/10 flex items-center justify-center mb-4">
@@ -252,7 +261,8 @@ export default function DemoModal({ isOpen, onClose }) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-3 bg-[#00A63E] text-white rounded-lg font-['Inter'] font-medium text-[15px] hover:bg-[#008236] transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] shadow-md disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full bg-[#00A63E] text-white rounded-lg font-['Inter'] font-medium hover:bg-[#008236] transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] shadow-md disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                style={{ fontSize: "15px", padding: "14px", minHeight: "48px" }}
               >
                 {submitting ? "Submitting…" : "Request My Demo →"}
               </button>

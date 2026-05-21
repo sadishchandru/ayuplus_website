@@ -59,12 +59,12 @@ export default function VaidyaModePage() {
     <main className="min-h-screen bg-white">
 
       {/* Hero */}
-      <section className="pt-[100px] md:pt-[140px] pb-[60px] md:pb-[80px] bg-[radial-gradient(ellipse_at_top,_#00A63E0D_0%,_white_60%)] flex flex-col items-center">
+      <section className="pt-[80px] md:pt-[140px] pb-[60px] md:pb-[80px] bg-[radial-gradient(ellipse_at_top,_#00A63E0D_0%,_white_60%)] flex flex-col items-center">
         <div className="container-1280 text-center w-full px-4">
           <div className="flex justify-center mb-2">
             <img src="/images/leaf.svg" alt="Leaf" style={{ width: 55, height: "auto" }} />
           </div>
-          <h1 className="font-['Hedvig_Letters_Serif'] font-normal text-[28px] md:text-[52px] leading-[36px] md:leading-[62px] tracking-[0.12px] text-[#101828] mb-[20px]">
+          <h1 className="font-['Hedvig_Letters_Serif'] font-normal leading-[1.2] tracking-[0.12px] text-[#101828] mb-[20px]" style={{ fontSize: "clamp(24px, 5vw, 52px)", wordBreak: "break-word" }}>
             Vaidya Mode — Complete Consultation<br className="hidden md:block" /> Without Front Office
           </h1>
           <p className="ayup-section-sub font-normal text-[16px] md:text-[18px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
