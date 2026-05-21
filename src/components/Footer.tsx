@@ -11,9 +11,9 @@ const PLATFORM_LINKS = [
 ];
 
 const RESOURCE_LINKS = [
-  { href: "https://ayplus.gleamingsoftware.com/public/index.html", label: "Documentation", target: "_blank" },
-  { href: "https://www.youtube.com/@ayuplus", label: "Training Videos", target: "_blank" },
-  { href: "https://ayplus.gleamingsoftware.com/public/index.html", label: "Tutorials", target: "_blank" },
+  { href: "#", label: "Documentation", target: "_blank" },
+  { href: "#", label: "Training Videos", target: "_blank" },
+  { href: "#", label: "Tutorials", target: "_blank" },
   { href: "/contact", label: "Case Studies" },
   { href: "/contact", label: "Support Center" },
 ];
