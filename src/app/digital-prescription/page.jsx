@@ -105,7 +105,7 @@ export default function DigitalPrescriptionPage() {
             { emoji: "👨‍⚕️", label: "Solo Doctor Workflow" },
             { emoji: "📤", label: "Digital Prescription to Patient" },
           ].map((item, i, arr) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44", whiteSpace: "nowrap" }}>
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "6px 14px", borderRight: i < arr.length - 1 ? "1px solid #c0ddc8" : "none", fontSize: "13px", fontWeight: 600, color: "#2d6e44" }}>
               <span style={{ fontSize: "15px" }}>{item.emoji}</span>
               {item.label}
             </div>

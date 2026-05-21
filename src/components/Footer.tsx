@@ -6,17 +6,16 @@ const PLATFORM_LINKS = [
   { href: "/opd-ipd-management", label: "Hospital Modules" },
   { href: "/vaidya-mode", label: "Dashboard Preview" },
   { href: "/case-sheets", label: "Ayurveda Compliance" },
-  { href: "#", label: "Security & Privacy" },
+  { href: "mailto:contact@ayuplus.com?subject=Privacy%20Policy%20Enquiry", label: "Security & Privacy" },
   { href: "/hospital-settings", label: "Integration APIs" },
 ];
 
 const RESOURCE_LINKS = [
-  { href: "#", label: "Documentation" },
-  { href: "#", label: "Training Videos" },
-  { href: "#", label: "Tutorials" },
-  { href: "#", label: "Case Studies" },
+  { href: "https://ayplus.gleamingsoftware.com/public/index.html", label: "Documentation", target: "_blank" },
+  { href: "https://www.youtube.com/@ayuplus", label: "Training Videos", target: "_blank" },
+  { href: "https://ayplus.gleamingsoftware.com/public/index.html", label: "Tutorials", target: "_blank" },
+  { href: "/contact", label: "Case Studies" },
   { href: "/contact", label: "Support Center" },
-  //{ href: "#", label: "Pricing" },
 ];
 
 const Footer = () => {
@@ -69,6 +68,8 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
+                      target={link.target}
+                      rel={link.target ? "noopener noreferrer" : undefined}
                       className="font-['Inter'] font-normal text-[14px] leading-[20px] text-[#99A1AF] hover:text-[#00A63E] transition-colors"
                     >
                       {link.label}
@@ -138,11 +139,11 @@ const Footer = () => {
             . All rights reserved.
           </p>
           <div className="flex items-center gap-[10px] font-['Inter'] font-normal text-[13px] text-[#99A1AF]">
-            <Link href="#" className="hover:text-[#00A63E] transition-colors">Privacy Policy</Link>
+            <Link href="/contact" className="hover:text-[#00A63E] transition-colors">Privacy Policy</Link>
             <span>|</span>
-            <Link href="#" className="hover:text-[#00A63E] transition-colors">Terms of Service</Link>
+            <Link href="/contact" className="hover:text-[#00A63E] transition-colors">Terms of Service</Link>
             <span>|</span>
-            <Link href="#" className="hover:text-[#00A63E] transition-colors">Data Services</Link>
+            <Link href="/contact" className="hover:text-[#00A63E] transition-colors">Data Services</Link>
           </div>
         </div>
       </div>

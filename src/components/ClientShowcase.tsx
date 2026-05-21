@@ -2,7 +2,7 @@
 
 export default function ClientShowcase() {
   return (
-    <section style={{
+    <section className="client-showcase-section" style={{
       background: "white",
       width: "100%",
       padding: "60px 5%",
@@ -23,7 +23,7 @@ export default function ClientShowcase() {
           Trusted by Ayurvedic hospitals across India
         </p>
 
-      <div style={{
+      <div className="client-inner-flex" style={{
         border: "1px solid #c8e6d0",
         borderRadius: "20px",
         padding: "32px 36px",
@@ -40,10 +40,11 @@ export default function ClientShowcase() {
       }}>
 
         {/* Left: logo + hospital info */}
-        <div style={{ display: "flex", alignItems: "flex-start", gap: "20px", flex: "1 1 220px", minWidth: "200px" }}>
+        <div className="client-logo-row" style={{ display: "flex", alignItems: "flex-start", gap: "20px", flex: "1 1 220px", minWidth: "200px" }}>
           <img
             src="/images/hari_logo.png"
             alt="Hari Ashtanga Ayurveda Chikitsalaya logo"
+            className="client-logo-img"
             style={{
               width: "90px",
               height: "90px",
@@ -88,7 +89,7 @@ export default function ClientShowcase() {
         </div>
 
         {/* Right: testimonial quote */}
-        <div style={{
+        <div className="client-quote-card" style={{
           flex: "1 1 300px",
           minWidth: "260px",
           background: "#fff",
@@ -142,9 +143,12 @@ export default function ClientShowcase() {
 
       <style>{`
         @media (max-width: 480px) {
-          .client-showcase-section { padding: 40px 20px !important; }
-          .client-card { padding: 20px !important; }
-          .client-logo { width: 64px !important; height: 64px !important; }
+          .client-showcase-section { padding: 48px 16px !important; }
+          .client-inner-flex { padding: 20px 16px !important; gap: 20px !important; border-radius: 16px !important; }
+          .client-logo-row { flex-direction: column !important; align-items: center !important; text-align: center !important; min-width: 0 !important; width: 100% !important; }
+          .client-logo-img { width: 80px !important; height: 80px !important; }
+          .client-quote-card { min-width: 0 !important; width: 100% !important; box-sizing: border-box !important; padding: 16px !important; }
+          .client-quote-card p { font-size: 13px !important; }
         }
       `}</style>
     </section>
