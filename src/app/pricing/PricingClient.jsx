@@ -218,7 +218,7 @@ export default function PricingClient() {
           <div className="flex justify-center mb-2">
             <img src="/images/leaf.svg" alt="Leaf" style={{ width: 55, height: "auto" }} />
           </div>
-          <h1 className="font-['Hedvig_Letters_Serif'] font-normal leading-[1.2] tracking-[0.12px] text-[#101828] mb-[20px]" style={{ fontSize: "clamp(24px, 5vw, 52px)", wordBreak: "break-word" }}">
+          <h1 className="font-['Hedvig_Letters_Serif'] font-normal leading-[1.2] tracking-[0.12px] text-[#101828] mb-[20px]" style={{ fontSize: "clamp(24px, 5vw, 52px)", wordBreak: "break-word" }}>
             Simple, Honest Pricing
           </h1>
           <p className="font-normal text-[14px] md:text-[17px] md:leading-[39px] tracking-[0.07px] text-center text-[#4A5565] mb-[28px] max-w-2xl mx-auto">
