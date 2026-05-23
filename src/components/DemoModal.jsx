@@ -55,7 +55,7 @@ export default function DemoModal({ isOpen, onClose }) {
       if (!res.ok) throw new Error("Submission failed");
       setSuccess(true);
     } catch {
-      setError("Something went wrong. Please try again or email us at contact@ayuplus.com.");
+      setError("Something went wrong. Please try again or email us at contact@ayuplus.in.");
     } finally {
       setSubmitting(false);
     }

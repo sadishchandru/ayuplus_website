@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact AyuPlus – Book a Free Demo",
   description:
-    "Get in touch with the AyuPlus team. Book a free demo, ask about pricing, or reach us directly. Gleaming Software, Puducherry, India. +91 98949 97482 | contact@ayuplus.com",
+    "Get in touch with the AyuPlus team. Book a free demo, ask about pricing, or reach us directly. Gleaming Software, Puducherry, India. +91 98949 97482 | contact@ayuplus.in",
   alternates: { canonical: "https://www.ayuplus.in/contact" },
   openGraph: {
     type: "website",
@@ -42,7 +42,7 @@ export default function ContactLayout({ children }: { children: React.ReactNode 
     logo: "https://www.ayuplus.in/images/Logo.svg",
     image: "https://www.ayuplus.in/images/og-image.jpg",
     telephone: "+91-98949-97482",
-    email: "contact@ayuplus.com",
+    email: "contact@ayuplus.in",
     address: {
       "@type": "PostalAddress",
       streetAddress: "St Anthony Koil St, Kavery Nagar, Reddiarpalayam",

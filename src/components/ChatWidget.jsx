@@ -260,7 +260,7 @@ export default function ChatWidget() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Something went wrong. Please try again or email us at contact@ayuplus.com or call +91 98949 97482.", id: nextId(), animate: true },
+        { role: "assistant", content: "Something went wrong. Please try again or email us at contact@ayuplus.in or call +91 98949 97482.", id: nextId(), animate: true },
       ]);
     } finally {
       setLoading(false);
@@ -273,7 +273,7 @@ export default function ChatWidget() {
       ...prev,
       {
         role: "assistant",
-        content: `Got it, ${name}! Someone from our team will call you within 24 hours to set up your demo. You can also reach us at contact@ayuplus.com or +91 98949 97482.`,
+        content: `Got it, ${name}! Someone from our team will call you within 24 hours to set up your demo. You can also reach us at contact@ayuplus.in or +91 98949 97482.`,
         id: nextId(),
         animate: true,
       },

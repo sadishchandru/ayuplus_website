@@ -595,7 +595,7 @@ export default function PricingClient() {
           </a>
         </div>
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "8px 24px", fontSize: "13px", color: "#86efac" }}>
-          <a href="mailto:contact@ayuplus.com" style={{ color: "#86efac" }}>contact@ayuplus.com</a>
+          <a href="mailto:contact@ayuplus.in" style={{ color: "#86efac" }}>contact@ayuplus.in</a>
           <span style={{ color: "#4ade80" }}>|</span>
           <a href="tel:+919894997482" style={{ color: "#86efac" }}>+91 98949 97482</a>
         </div>

@@ -109,7 +109,7 @@ export async function POST(request) {
                 <li>Custom proposal based on your needs</li>
               </ol>
             </div>
-            <p style="color:#6b7280;font-size:13px;margin:0;">Need immediate help? Reach us at <a href="mailto:contact@ayuplus.com" style="color:#00A63E;">contact@ayuplus.com</a> or call <a href="tel:+919894997482" style="color:#00A63E;">+91 98949 97482</a></p>
+            <p style="color:#6b7280;font-size:13px;margin:0;">Need immediate help? Reach us at <a href="mailto:contact@ayuplus.in" style="color:#00A63E;">contact@ayuplus.in</a> or call <a href="tel:+919894997482" style="color:#00A63E;">+91 98949 97482</a></p>
           </div>
           <div style="padding:16px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
             <p style="color:#9ca3af;font-size:12px;margin:0;">© 2026 Gleaming Software · Ayuplus Hospital Management System</p>

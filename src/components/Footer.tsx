@@ -6,7 +6,7 @@ const PLATFORM_LINKS = [
   { href: "/opd-ipd-management", label: "Hospital Modules" },
   { href: "/vaidya-mode", label: "Dashboard Preview" },
   { href: "/case-sheets", label: "Ayurveda Compliance" },
-  { href: "mailto:contact@ayuplus.com?subject=Privacy%20Policy%20Enquiry", label: "Security & Privacy" },
+  { href: "mailto:contact@ayuplus.in?subject=Privacy%20Policy%20Enquiry", label: "Security & Privacy" },
   { href: "/hospital-settings", label: "Integration APIs" },
 ];
 
@@ -85,11 +85,11 @@ const Footer = () => {
               <ul className="flex flex-col gap-[10px]">
                 <li>
                   <Link
-                    href="mailto:contact@ayuplus.com"
+                    href="mailto:contact@ayuplus.in"
                     className="font-['Inter'] font-normal text-[14px] text-[#99A1AF] hover:text-[#00A63E] transition-colors flex items-center gap-[8px]"
                   >
                     <Image src="/images/email.svg" alt="Email" width={15} height={15} className="h-auto flex-shrink-0" />
-                    <span>contact@ayuplus.com</span>
+                    <span>contact@ayuplus.in</span>
                   </Link>
                 </li>
                 <li>

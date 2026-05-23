@@ -18,7 +18,7 @@ const FAQS = [
   },
   {
     q: "What is the pricing for AyuPlus?",
-    a: "AyuPlus pricing is customised based on hospital size and the modules required. Contact Gleaming Software at +91 98949 97482 or contact@ayuplus.com for a tailored quote.",
+    a: "AyuPlus pricing is customised based on hospital size and the modules required. Contact Gleaming Software at +91 98949 97482 or contact@ayuplus.in for a tailored quote.",
   },
   {
     q: "Which languages does AyuPlus support?",

@@ -241,8 +241,8 @@ export default function ContactPage() {
                   </div>
                   <p className="font-['Inter'] font-semibold text-[13px] text-[#6B7280] uppercase tracking-widest">Email</p>
                 </div>
-                <a href="mailto:contact@ayuplus.com" className="font-['Inter'] font-bold text-[16px] text-[#00A63E] hover:text-[#008236] transition-colors">
-                  contact@ayuplus.com
+                <a href="mailto:contact@ayuplus.in" className="font-['Inter'] font-bold text-[16px] text-[#00A63E] hover:text-[#008236] transition-colors">
+                  contact@ayuplus.in
                 </a>
                 <p className="font-['Inter'] text-[13px] text-[#6B7280] mt-1">We reply within one business day</p>
               </div>

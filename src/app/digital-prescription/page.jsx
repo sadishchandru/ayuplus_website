@@ -308,7 +308,7 @@ export default function DigitalPrescriptionPage() {
             Book Free Demo →
           </button>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
-            <a href="mailto:contact@ayuplus.com" className="font-['Inter'] text-[14px] text-white/80 hover:text-white transition-colors">contact@ayuplus.com</a>
+            <a href="mailto:contact@ayuplus.in" className="font-['Inter'] text-[14px] text-white/80 hover:text-white transition-colors">contact@ayuplus.in</a>
             <span className="hidden sm:inline font-['Inter'] text-white/40">|</span>
             <a href="tel:+919894997482" className="font-['Inter'] text-[14px] text-white/80 hover:text-white transition-colors">+91 98949 97482</a>
           </div>
