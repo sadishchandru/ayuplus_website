@@ -9,10 +9,12 @@ export default function StructuredData() {
     description:
       "Purpose-built Ayurvedic Hospital Management System covering OPD, IPD, Panchakarma, Pharmacy, Billing, and Prakruti assessment.",
     offers: {
-      "@type": "Offer",
-      price: "0",
+      "@type": "AggregateOffer",
+      lowPrice: "1499",
+      highPrice: "8999",
       priceCurrency: "INR",
-      description: "Contact for custom pricing based on hospital size",
+      offerCount: 4,
+      url: "https://www.ayuplus.in/pricing",
     },
     creator: {
       "@type": "Organization",
@@ -28,14 +30,20 @@ export default function StructuredData() {
       },
     },
     featureList: [
-      "Panchakarma procedure tracking",
-      "Prakruti & Dosha assessment",
-      "OPD and IPD patient management",
-      "Ayurvedic pharmacy management",
-      "Hospital billing and invoicing",
-      "Role-based access control",
-      "Clinical examination forms",
+      "Vaidya Mode — dedicated doctor-first Ayurvedic consultation EMR",
+      "7 Panchakarma procedure forms: SnehaPanam, Samyak, Bahya Sneha, Vamanam, Virechanam, Vasthi, Uttara Vasthi",
+      "9 Ayurvedic clinical case sheets including Nadi Pareeksha and Asta Sthana Pariksha",
+      "Prakruti and Dosha assessment with scoring",
+      "OPD and IPD patient management under one patient number",
+      "Ayurvedic pharmacy management with formulary and inventory",
+      "GST-compliant hospital billing linked to consultations and Panchakarma",
+      "Digital prescription pad for Ayurvedic doctors",
       "Discharge summary management",
+      "Role-based access control (Doctor, Receptionist, Pharmacist, Admin)",
+      "Tithi-based Ayurvedic treatment scheduling",
+      "Multilingual support: Malayalam, Tamil, Hindi, English",
+      "Cloud or on-premises deployment",
+      "WhatsApp and SMS patient notifications",
     ],
   };
 
@@ -116,7 +124,7 @@ export default function StructuredData() {
         name: "What is the pricing for AyuPlus?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "AyuPlus pricing is customised based on hospital size and the modules required. Contact Gleaming Software at +91 98949 97482 or contact@ayuplus.com for a tailored quote.",
+          text: "AyuPlus has four transparent pricing plans: Starter at ₹1,499/month (1 user), Professional at ₹3,999/month (up to 10 users), Advanced at ₹5,999/month (up to 25 users), and Enterprise at ₹8,999/month (unlimited users). Each plan includes a one-time setup fee. See full pricing at https://www.ayuplus.in/pricing.",
         },
       },
       {
@@ -135,6 +143,46 @@ export default function StructuredData() {
           text: "Vaidya Mode is a dedicated interface for Ayurvedic doctors (Vaidyas) to record classical examination findings, Prakruti assessments, Dosha scores, and treatment plans — all within the patient's clinical record.",
         },
       },
+      {
+        "@type": "Question",
+        name: "Does AyuPlus support Nadi Pareeksha and Asta Sthana Pariksha?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. AyuPlus includes digital records for Nadi Pareeksha (pulse diagnosis) and Asta Sthana Pariksha (eightfold examination) as part of Vaidya Mode and the clinical case sheet system. Doctors can record findings digitally and link them to the patient's treatment plan.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What makes AyuPlus different from generic hospital management software?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "AyuPlus is purpose-built for Ayurveda — not adapted from generic HMS. It includes Vaidya Mode (doctor-first Ayurvedic EMR), 7 dedicated Panchakarma forms, 9 Ayurvedic clinical case sheets, Nadi Pareeksha and Asta Sthana Pariksha records, Prakruti & Dosha assessment, Tithi-based scheduling, and an Ayurvedic pharmacy formulary. No generic HMS offers these workflows.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does AyuPlus work for small Ayurvedic clinics, not just hospitals?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. The Starter plan at ₹1,499/month is designed for solo practitioners and small Ayurvedic clinics. The Professional plan at ₹3,999/month covers clinics with up to 10 staff. AyuPlus scales from a single-doctor practice to large multi-branch hospital networks.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does AyuPlus compare to Ayurlive?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "AyuPlus and Ayurlive are both Ayurvedic HMS solutions. AyuPlus differentiators include: Vaidya Mode (dedicated doctor-first consultation EMR), Tithi-based scheduling, 7 Panchakarma forms with Nadi Pareeksha records, transparent published pricing starting at ₹1,499/month, and the option to deploy on-premises or on the cloud. Ayurlive focuses on ERP-style management across 18+ modules but does not publish its pricing.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What are the Panchakarma forms available in AyuPlus?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "AyuPlus includes 7 dedicated Panchakarma procedure forms: SnehaPanam (day-wise tracking), Samyak Snehapana, Bahya Sneha, Vamanam, Virechanam, Vasthi, and Uttara Vasthi. Each form supports day-wise progress tracking and generates printable procedure records.",
+        },
+      },
     ],
   };
 
@@ -148,14 +196,6 @@ export default function StructuredData() {
     publisher: {
       "@type": "Organization",
       name: "Gleaming Software",
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: "https://www.ayuplus.in/?q={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
     },
   };
 

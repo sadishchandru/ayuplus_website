@@ -1,23 +1,23 @@
 export const metadata = {
-  title: "Vaidya Mode – Doctor-First Consultation Workflow",
+  title: "Vaidya Mode – Ayurvedic Doctor Consultation Software & EMR",
   description:
-    "AyuPlus Vaidya Mode lets Ayurvedic doctors manage the complete OPD consultation independently — patient info, Asta Sthana Pariksha, NCD tracking, prescriptions and treatment planning in one seamless workflow. No front-office dependency.",
+    "AyuPlus Vaidya Mode is India's only Ayurvedic doctor-first EMR — complete OPD consultation independently: Asta Sthana Pariksha, Nadi Pareeksha, NCD tracking, digital prescriptions and Panchakarma treatment planning. No front-office dependency.",
   alternates: { canonical: "https://www.ayuplus.in/vaidya-mode" },
   openGraph: {
     type: "website",
     locale: "en_IN",
     siteName: "AyuPlus HMS",
     url: "https://www.ayuplus.in/vaidya-mode",
-    title: "Vaidya Mode – Doctor-First Consultation Workflow | AyuPlus HMS",
+    title: "Vaidya Mode – Ayurvedic Doctor Consultation Software & EMR | AyuPlus HMS",
     description:
-      "The only Ayurvedic HMS with a dedicated doctor workflow. Complete OPD consultation — Asta Sthana Pariksha, prescriptions, treatment planning — without front-office support.",
+      "India's only Ayurvedic doctor-first EMR. Complete OPD consultation — Asta Sthana Pariksha, Nadi Pareeksha, prescriptions, Panchakarma treatment planning — without front-office support.",
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "AyuPlus Vaidya Mode consultation screen" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vaidya Mode – Doctor-First Consultation Workflow | AyuPlus HMS",
+    title: "Vaidya Mode – Ayurvedic Doctor EMR | AyuPlus HMS",
     description:
-      "The only Ayurvedic HMS with a dedicated doctor workflow. Complete OPD without front-office dependency.",
+      "India's only doctor-first Ayurvedic EMR. Asta Sthana Pariksha, Nadi Pareeksha, prescriptions — no front-office needed.",
     images: ["/images/og-image.jpg"],
   },
 };
@@ -34,9 +34,9 @@ export default function Layout({ children }) {
   const webpage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Vaidya Mode – Doctor-First Consultation Workflow | AyuPlus HMS",
+    name: "Vaidya Mode – Ayurvedic Doctor Consultation Software & EMR | AyuPlus HMS",
     description:
-      "AyuPlus Vaidya Mode lets Ayurvedic doctors manage the complete OPD consultation independently — Asta Sthana Pariksha, NCD tracking, prescriptions and treatment planning in one screen.",
+      "India's only Ayurvedic doctor-first EMR — Asta Sthana Pariksha, Nadi Pareeksha, NCD tracking, digital prescriptions and Panchakarma treatment planning in one screen.",
     url: "https://www.ayuplus.in/vaidya-mode",
     isPartOf: { "@type": "WebSite", url: "https://www.ayuplus.in", name: "AyuPlus HMS" },
     breadcrumb: breadcrumb,

@@ -33,23 +33,45 @@ export const metadata: Metadata = {
   description:
     "AyuPlus is India’s purpose-built Ayurvedic Hospital Management System. Manage OPD, IPD, Panchakarma, Pharmacy, Billing & Prakruti in one platform. Trusted by Hari Ashtanga Ayurveda Chikitsalaya, Puducherry — 14,757 patients. Starting ₹1,499/month.",
   keywords: [
+    // Core product terms
     "Ayurvedic hospital management system",
     "Ayurveda HMS software India",
-    "Panchakarma management software",
+    "Ayurveda hospital management software India",
+    "AYUSH hospital management software",
+    // Clinic & practice terms (competitors rank heavily here)
     "Ayurvedic clinic software",
+    "Ayurveda clinic management software India",
+    "Ayurveda practice management software",
+    // EMR / EHR (high-volume, under-targeted by AyuPlus)
+    "Ayurvedic EMR software",
+    "Ayurveda EHR software India",
+    // Clinical modules
+    "Panchakarma management software",
+    "Panchakarma treatment software India",
     "OPD IPD management Ayurveda",
     "Prakruti assessment software",
-    "hospital billing software Ayurveda",
-    "Kerala Ayurveda hospital software",
-    "Panchakarma tracking system",
-    "Vaidya consultation software",
-    "Ayurvedic EMR software",
     "dosha assessment software",
-    "Gleaming Software AyuPlus",
+    "Nadi Pareeksha software",
+    "Asta Sthana Pariksha digital",
+    // Billing & pharmacy
+    "hospital billing software Ayurveda",
+    "Ayurvedic pharmacy management software",
+    // Deployment & compliance (competitor differentiators)
+    "cloud Ayurveda hospital software",
+    "on-premises Ayurveda hospital software",
+    "ABDM compliant Ayurveda software",
+    // Unique AyuPlus features
+    "Vaidya consultation software",
+    "Panchakarma tracking system",
+    "multilingual Ayurveda hospital software",
+    "Tithi based scheduling software",
+    // Pricing & geo (conversion-focused)
     "ayurvedic HMS pricing India",
     "ayurvedic hospital software ₹1499",
     "affordable ayurvedic clinic software",
+    "Kerala Ayurveda hospital software",
     "Puducherry ayurvedic hospital software",
+    "Gleaming Software AyuPlus",
   ],
   authors: [{ name: "Gleaming Software", url: "https://gleamingsoftware.com" }],
   creator: "Gleaming Software",
@@ -96,7 +118,6 @@ export const metadata: Metadata = {
       { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.ico.bak", sizes: "any" },
     ],
     shortcut: "/icon.svg",
     apple: "/apple-icon.png",
@@ -109,7 +130,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <StructuredData />
       </head>

@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "Ayurvedic OPD & IPD Management System",
+  title: "Ayurvedic OPD & IPD Management System – Patient Records & Beds",
   description:
-    "Complete OPD and IPD management for Ayurvedic hospitals. Patient registration, bed management, Vaidya Mode consultations, discharge summaries — all under one patient number. Built specifically for Ayurveda.",
+    "Complete Ayurvedic OPD and IPD management system — patient registration, EMR records, bed management, Vaidya Mode consultations, discharge summaries. Cloud or on-premises. All under one patient number, built specifically for Ayurveda.",
   alternates: { canonical: "https://www.ayuplus.in/opd-ipd-management" },
   openGraph: {
     type: "website",

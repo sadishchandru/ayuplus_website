@@ -1,23 +1,23 @@
 export const metadata = {
-  title: "Hospital Billing & Invoice Management",
+  title: "Ayurvedic Hospital Billing Software – Invoices, Payments & Reports",
   description:
-    "Complete Ayurvedic hospital billing — multi-service invoices, quick bills, advance payments, Cash/Card/UPI/Insurance. Every treatment session linked to an invoice automatically. Stop revenue leakage today.",
+    "Purpose-built Ayurvedic hospital billing software — multi-service invoices, quick bills, advance payments, Cash/Card/UPI/Insurance. Every Panchakarma session and pharmacy item linked to an invoice automatically. Stop revenue leakage today.",
   alternates: { canonical: "https://www.ayuplus.in/billing" },
   openGraph: {
     type: "website",
     locale: "en_IN",
     siteName: "AyuPlus HMS",
     url: "https://www.ayuplus.in/billing",
-    title: "Hospital Billing & Invoice Management | AyuPlus HMS",
+    title: "Ayurvedic Hospital Billing Software – Invoices, Payments & Reports | AyuPlus HMS",
     description:
-      "Multi-service invoices, quick bills, advance payments with balance tracking. Every Panchakarma session and pharmacy item linked to the invoice automatically — zero revenue leakage.",
+      "Ayurvedic hospital billing built for Panchakarma treatments and pharmacy. Multi-service invoices, quick bills, advance payments — every session linked automatically. Zero revenue leakage.",
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "AyuPlus hospital billing and invoice management" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hospital Billing & Invoice Management | AyuPlus HMS",
+    title: "Ayurvedic Hospital Billing Software | AyuPlus HMS",
     description:
-      "Multi-service invoices, quick bills, advance payments. Zero revenue leakage for Ayurvedic hospitals.",
+      "Ayurvedic hospital billing software — multi-service invoices, Panchakarma billing, pharmacy. Zero revenue leakage.",
     images: ["/images/og-image.jpg"],
   },
 };
@@ -34,7 +34,7 @@ export default function Layout({ children }) {
   const webpage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Hospital Billing & Invoice Management | AyuPlus HMS",
+    name: "Ayurvedic Hospital Billing Software – Invoices, Payments & Reports | AyuPlus HMS",
     description:
       "Complete Ayurvedic hospital billing — multi-service invoices, quick bills, advance payments, Cash/Card/UPI/Insurance. Every treatment session linked to an invoice automatically.",
     url: "https://www.ayuplus.in/billing",

@@ -1,23 +1,23 @@
 export const metadata = {
-  title: "Hospital Settings – Beds, Roles & Messaging Config",
+  title: "Ayurvedic Hospital Setup – Beds, Roles & WhatsApp Notifications",
   description:
-    "Complete hospital configuration in AyuPlus — bed setup, shift assignment, role-based access control, SMS/WhatsApp messaging integration, and master settings. Everything configured once, works everywhere.",
+    "Complete Ayurvedic hospital configuration in AyuPlus — bed setup, shift assignment, role-based access control, WhatsApp & SMS messaging integration, and master settings. Configure once, runs everywhere.",
   alternates: { canonical: "https://www.ayuplus.in/hospital-settings" },
   openGraph: {
     type: "website",
     locale: "en_IN",
     siteName: "AyuPlus HMS",
     url: "https://www.ayuplus.in/hospital-settings",
-    title: "Hospital Settings – Beds, Roles & Messaging Config | AyuPlus HMS",
+    title: "Ayurvedic Hospital Setup – Beds, Roles & WhatsApp Notifications | AyuPlus HMS",
     description:
-      "Bed layout, staff shifts, user roles, SMS/WhatsApp notifications, and all master data — configured once from a single settings panel. Go live in 4 days.",
+      "Ayurvedic hospital setup — bed layout, staff shifts, user roles, WhatsApp & SMS notifications. All master data configured once from a single panel. Go live in 4 days.",
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "AyuPlus hospital settings and configuration panel" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hospital Settings – Beds, Roles & Messaging Config | AyuPlus HMS",
+    title: "Ayurvedic Hospital Setup – Beds, Roles & WhatsApp | AyuPlus HMS",
     description:
-      "Bed setup, staff shifts, roles, SMS/WhatsApp — all hospital configuration in one place. Go live in 4 days.",
+      "Ayurvedic hospital setup — beds, shifts, roles, WhatsApp & SMS — all in one configuration panel. Go live in 4 days.",
     images: ["/images/og-image.jpg"],
   },
 };
@@ -34,7 +34,7 @@ export default function Layout({ children }) {
   const webpage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Hospital Settings – Beds, Roles & Messaging Config | AyuPlus HMS",
+    name: "Ayurvedic Hospital Setup – Beds, Roles & WhatsApp Notifications | AyuPlus HMS",
     description:
       "Complete hospital configuration in AyuPlus — bed setup, shift assignment, role-based access control, SMS/WhatsApp messaging integration, and master settings.",
     url: "https://www.ayuplus.in/hospital-settings",

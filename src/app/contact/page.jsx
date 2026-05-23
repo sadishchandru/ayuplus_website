@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import DemoModal from "@/components/DemoModal";
 export default function ContactPage() {
   const [demoOpen, setDemoOpen] = useState(false);
+  const [mapMounted, setMapMounted] = useState(false);
   const [form, setForm] = useState({
     fullName: "",
     phone: "",
@@ -15,6 +16,10 @@ export default function ContactPage() {
   });
   const [status, setStatus] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    setMapMounted(true);
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -273,18 +278,19 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Google Map */}
+          {/* Google Map — deferred mount to prevent MutationObserver race on Firefox */}
           <div className="mt-10 rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ height: "380px" }}>
-            <iframe
-              src="https://maps.google.com/maps?q=Reddiarpalayam+Puducherry&z=15&output=embed"
-              width="100%"
-              height="380"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Gleaming Software Office Location"
-            />
+            {mapMounted ? (
+              <iframe
+                src="https://maps.google.com/maps?q=Gleaming+Software+Reddiarpalayam+Puducherry&z=15&output=embed"
+                style={{ border: 0, width: "100%", height: "100%", display: "block" }}
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Gleaming Software Office Location"
+              />
+            ) : (
+              <div style={{ width: "100%", height: "380px", background: "#f0faf4" }} />
+            )}
           </div>
         </div>
       </section>

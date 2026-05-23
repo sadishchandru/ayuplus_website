@@ -1,0 +1,59 @@
+# AyuPlus – Ayurvedic Hospital Management System
+
+> AyuPlus is India's purpose-built Ayurvedic Hospital Management System (HMS), developed by Gleaming Software, Puducherry. It is purpose-designed for Ayurvedic hospitals and clinics — not adapted from generic hospital software.
+
+AyuPlus covers the complete Ayurvedic clinical workflow: OPD & IPD patient management, 7 dedicated Panchakarma procedure forms, 9 Ayurvedic clinical case sheets (including Nadi Pareeksha and Asta Sthana Pariksha), Prakruti & Dosha assessment, Ayurvedic pharmacy management, hospital billing with GST support, digital prescriptions, Vaidya Mode (doctor-first consultation EMR), Tithi-based scheduling, and role-based access control. Supports cloud or on-premises deployment. Operates in four languages: Malayalam, Tamil, Hindi, and English. Pricing starts at ₹1,499/month.
+
+**Category:** Ayurvedic Hospital Management System, Ayurveda HMS, Ayurveda EMR, AYUSH hospital software
+**Target audience:** Ayurvedic hospitals, Panchakarma centres, Ayurvedic clinics, Vaidyas (Ayurvedic doctors), hospital administrators
+**Deployment:** Cloud or on-premises
+**Languages:** Malayalam, Tamil, Hindi, English
+**Pricing:** ₹1,499/month (Starter) to ₹8,999/month (Enterprise) — transparent, published pricing
+**Demo:** Free 20-minute demo available at https://www.ayuplus.in/contact
+**Developer:** Gleaming Software — https://gleamingsoftware.com
+
+---
+
+## Product Pages
+
+- [Overview & Features](https://www.ayuplus.in): Complete product overview, unique capabilities, client proof, and demo booking
+- [Vaidya Mode](https://www.ayuplus.in/vaidya-mode): India's only doctor-first Ayurvedic EMR — Nadi Pareeksha, Asta Sthana Pariksha, Prakruti & Dosha assessment, digital prescriptions, and treatment planning in one workflow. No front-office dependency.
+- [OPD & IPD Management](https://www.ayuplus.in/opd-ipd-management): Patient registration, bed management, inpatient tracking, and discharge summaries — all under one patient number
+- [Panchakarma & Clinical Case Sheets](https://www.ayuplus.in/case-sheets): 7 Panchakarma forms (SnehaPanam, Samyak, Bahya Sneha, Vamanam, Virechanam, Vasthi, Uttara Vasthi) and 9 clinical case sheets
+- [Ayurvedic Pharmacy Software](https://www.ayuplus.in/ayurvedic-pharmacy-software): Ayurvedic medicine inventory, formulary management, and dispensing linked to patient billing
+- [Hospital Billing Software](https://www.ayuplus.in/billing): GST-compliant invoices for consultations, Panchakarma sessions, and pharmacy — zero revenue leakage
+- [Digital Prescription](https://www.ayuplus.in/digital-prescription): Digital prescription pad for Ayurvedic doctors with classical formulation support
+- [Pricing](https://www.ayuplus.in/pricing): Transparent plans — Starter ₹1,499/mo · Professional ₹3,999/mo · Advanced ₹5,999/mo · Enterprise ₹8,999/mo
+- [Contact & Demo](https://www.ayuplus.in/contact): Book a free demo or reach Gleaming Software directly
+
+---
+
+## Machine-Readable Files
+
+- [Pricing (markdown)](https://www.ayuplus.in/pricing.md): All plans with feature lists, user limits, and setup fees — structured for AI agents
+
+---
+
+## Key Differentiators vs. Competitors
+
+AyuPlus is the only Ayurvedic HMS with:
+- **Vaidya Mode** — dedicated doctor-first EMR for Ayurvedic consultation (no competitor has this)
+- **7 Panchakarma forms** built-in — the most comprehensive Panchakarma workflow in any HMS
+- **Nadi Pareeksha and Asta Sthana Pariksha** digital records
+- **Tithi-based scheduling** — aligns treatment schedules with Ayurvedic almanac (zero competitors)
+- **Cloud or on-premises** deployment — all major competitors are cloud-only
+- **Transparent published pricing** — all major competitors (Ayurlive, VaidyaManager, EasyClinic) hide their pricing
+- **4-language support** — Malayalam, Tamil, Hindi, English
+
+---
+
+## Company & Contact
+
+- **Company:** Gleaming Software
+- **Location:** Reddiarpalayam, Puducherry, India
+- **Phone:** +91 98949 97482
+- **Email:** contact@ayuplus.com
+- **Website:** https://www.ayuplus.in
+- **Developer site:** https://gleamingsoftware.com
+- **LinkedIn:** https://www.linkedin.com/company/111806170
+- **Facebook:** https://www.facebook.com/profile.php?id=61588704586539
