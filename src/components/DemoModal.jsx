@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const INTEREST_OPTIONS = [
   "OPD / IPD Management",
@@ -31,6 +32,7 @@ const initialForm = {
 };
 
 export default function DemoModal({ isOpen, onClose }) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [form, setForm] = useState(initialForm);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -44,13 +46,15 @@ export default function DemoModal({ isOpen, onClose }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!executeRecaptcha) return;
     setSubmitting(true);
     setError("");
     try {
+      const recaptchaToken = await executeRecaptcha("demo_request");
       const res = await fetch("/api/demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, recaptchaToken }),
       });
       if (!res.ok) throw new Error("Submission failed");
       setSuccess(true);

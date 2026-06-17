@@ -3,6 +3,20 @@ import fs from "fs";
 import path from "path";
 import { Resend } from "resend";
 
+async function verifyRecaptcha(token) {
+  try {
+    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
+    });
+    const data = await res.json();
+    return data.success && data.score >= 0.5;
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request) {
   let body;
   try {
@@ -11,7 +25,12 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { name, phone, email, hospital, city, hospitalSize, interest, message } = body;
+  const { recaptchaToken, ...lead_fields } = body;
+  const { name, phone, email, hospital, city, hospitalSize, interest, message } = lead_fields;
+
+  if (!(await verifyRecaptcha(recaptchaToken))) {
+    return NextResponse.json({ error: "reCAPTCHA failed" }, { status: 400 });
+  }
 
   if (!name || !phone || !email || !hospital || !city || !hospitalSize || !interest) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });

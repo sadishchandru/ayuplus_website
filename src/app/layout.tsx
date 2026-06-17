@@ -13,6 +13,7 @@ import "./globals.css";
 import ChatWidget from "@/components/ChatWidget";
 import DemoNavbar from "@/components/DemoNavbar";
 import StructuredData from "./structured-data";
+import RecaptchaProvider from "@/components/RecaptchaProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -138,9 +139,11 @@ export default function RootLayout({
         className={`${inter.variable} ${hedvigSerif.variable} antialiased`}
         suppressHydrationWarning
       >
-        <DemoNavbar />
-        {children}
-        <ChatWidget />
+        <RecaptchaProvider>
+          <DemoNavbar />
+          {children}
+          <ChatWidget />
+        </RecaptchaProvider>
       </body>
     </html>
   );
