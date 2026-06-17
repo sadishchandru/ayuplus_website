@@ -37,8 +37,7 @@ const Hero = ({ onOpenModal }: { onOpenModal?: () => void }) => {
                     <FadeIn delay={600}>
                         <button
                             onClick={onOpenModal}
-                            className="mb-[28px] border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 hero-demo-cta"
-                            style={{ fontSize: "clamp(14px, 1.5vw, 18px)" }}
+                            className="mb-[28px] border-2 border-[#5A9A04] text-[#5A9A04] bg-transparent font-medium text-[14px] md:text-[18px] leading-[28px] tracking-[-0.44px] px-[20px] py-[10px] md:px-[28px] md:py-[14px] rounded-[8px] cursor-pointer hover:bg-[#5A9A04] hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
                         >
                             Book Free Demo →
                         </button>
