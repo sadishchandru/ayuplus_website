@@ -28,7 +28,7 @@ const Hero = ({ onOpenModal }: { onOpenModal?: () => void }) => {
                     </FadeIn>
 
                     <FadeIn delay={400}>
-                        <p className="font-normal tracking-[0.07px] text-center text-[#4A5565] mb-[20px] md:mb-[25px] max-w-2xl mx-auto"
+                        <p className="font-normal tracking-[0.07px] text-center text-[#4A5565] mb-[28px] md:mb-[28px] max-w-2xl mx-auto"
                            style={{ fontSize: "clamp(14px, 2vw, 18px)", lineHeight: "1.7" }}>
                             End-to-end OPD, IPD, treatments, pharmacy, billing, and administration.<br className="hidden md:block" /> Built specifically for Ayurvedic hospitals with operational maturity.
                         </p>
@@ -45,7 +45,7 @@ const Hero = ({ onOpenModal }: { onOpenModal?: () => void }) => {
                 </div>
             </section>
 
-            <div className="w-full lg:mt-[-125px] mt-[-60px] md:mt-[-100px] px-4 md:px-0">
+            <div className="w-full lg:mt-[-125px] mt-[0px] md:mt-[0px] px-4 md:px-0">
                 <FadeIn direction="up" delay={800}>
                     <Image
                         src="/images/Dashboard_v1.png"
