@@ -51,12 +51,17 @@ export default function DemoModal({ isOpen, onClose }) {
     setError("");
     try {
       const recaptchaToken = await executeRecaptcha("demo_request");
-      const res = await fetch("/api/demo", {
+      const r = await fetch("/api/demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, recaptchaToken }),
       });
-      if (!res.ok) throw new Error("Submission failed");
+      const j = await r.json();
+      console.log("demo resp:", r.status, j);
+      if (!r.ok) {
+        setError(j.error || "Something went wrong. Please try again or email us at contact@ayuplus.in.");
+        return;
+      }
       setSuccess(true);
     } catch {
       setError("Something went wrong. Please try again or email us at contact@ayuplus.in.");

@@ -11,9 +11,11 @@ async function verifyRecaptcha(token) {
       body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
     });
     const data = await res.json();
-    return data.success && data.score >= 0.5;
-  } catch {
-    return false;
+    console.log("recaptcha verify raw:", JSON.stringify(data));
+    return data;
+  } catch (err) {
+    console.error("recaptcha verify threw:", err.message);
+    return { success: false, "error-codes": ["fetch-threw"], _threw: err.message };
   }
 }
 
@@ -25,11 +27,19 @@ export async function POST(request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
+  try {
   const { recaptchaToken, ...lead_fields } = body;
   const { name, phone, email, hospital, city, hospitalSize, interest, message } = lead_fields;
 
-  if (!(await verifyRecaptcha(recaptchaToken))) {
-    return NextResponse.json({ error: "reCAPTCHA failed" }, { status: 400 });
+  const recaptchaData = await verifyRecaptcha(recaptchaToken);
+  const recaptchaOk = recaptchaData.success && recaptchaData.score >= 0.5;
+  console.log("recaptcha:", recaptchaOk);
+  if (!recaptchaOk) {
+    // TEMP DEBUG: expose Google's response so the browser shows why
+    return NextResponse.json(
+      { error: "reCAPTCHA failed", debug: recaptchaData },
+      { status: 400 }
+    );
   }
 
   if (!name || !phone || !email || !hospital || !city || !hospitalSize || !interest) {
@@ -99,8 +109,11 @@ export async function POST(request) {
         </div>
       `,
     });
-    if (error) console.error("Admin email error:", JSON.stringify(error));
-    else console.log("Admin email sent →", adminEmail, "| id:", data?.id);
+    if (error) {
+      console.error("RESEND:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    console.log("Admin email sent →", adminEmail, "| id:", data?.id);
   } catch (err) {
     console.error("Admin email failed:", err.message);
   }
@@ -143,4 +156,8 @@ export async function POST(request) {
   }
 
   return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error("DEMO HANDLER EXCEPTION:", err);
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
 }
