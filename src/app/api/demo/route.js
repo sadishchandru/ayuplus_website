@@ -35,11 +35,7 @@ export async function POST(request) {
   const recaptchaOk = recaptchaData.success && recaptchaData.score >= 0.5;
   console.log("recaptcha:", recaptchaOk);
   if (!recaptchaOk) {
-    // TEMP DEBUG: expose Google's response so the browser shows why
-    return NextResponse.json(
-      { error: "reCAPTCHA failed", debug: recaptchaData },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "reCAPTCHA failed" }, { status: 400 });
   }
 
   if (!name || !phone || !email || !hospital || !city || !hospitalSize || !interest) {

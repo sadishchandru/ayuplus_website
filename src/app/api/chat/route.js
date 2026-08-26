@@ -54,7 +54,7 @@ export async function POST(request) {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
+        model: "llama-3.3-70b-versatile",
         max_tokens: 512,
         temperature: 0.75,
         messages: [
