@@ -67,7 +67,11 @@ export async function POST(request) {
     if (!res.ok) {
       const err = await res.text();
       console.error("Groq error:", err);
-      return NextResponse.json({ error: "Upstream error" }, { status: 502 });
+      // TEMP DEBUG: expose Groq status + body to diagnose live 502
+      return NextResponse.json(
+        { error: "Upstream error", groqStatus: res.status, groqBody: err },
+        { status: 502 }
+      );
     }
 
     const data = await res.json();
