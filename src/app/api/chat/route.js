@@ -54,7 +54,7 @@ export async function POST(request) {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "openai/gpt-oss-20b",
         max_tokens: 512,
         temperature: 0.75,
         messages: [
@@ -67,11 +67,7 @@ export async function POST(request) {
     if (!res.ok) {
       const err = await res.text();
       console.error("Groq error:", err);
-      // TEMP DEBUG: expose Groq status + body to diagnose live 502
-      return NextResponse.json(
-        { error: "Upstream error", groqStatus: res.status, groqBody: err },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: "Upstream error" }, { status: 502 });
     }
 
     const data = await res.json();
