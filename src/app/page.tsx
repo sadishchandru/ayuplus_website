@@ -21,12 +21,12 @@ export default function Home() {
       <Hero onOpenModal={openModal} />
 
       <SocialProofBar />
-      <VideoTour onOpenModal={openModal} />
-      <ClientShowcase />
+      <VideoTour />
       <Stats />
       <VaidyaMode />
       <Features />
       <PainPointsSection />
+      <ClientShowcase />
       <FAQ />
       <LeadSection onOpenModal={openModal} />
       <Footer />
