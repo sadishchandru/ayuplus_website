@@ -45,8 +45,6 @@ export default function VideoTour() {
               borderRadius: "20px",
               padding: "20px",
               background: "#f7faf8",
-              maxWidth: "960px",
-              margin: "0 auto",
               width: "100%",
               boxSizing: "border-box",
             }}
