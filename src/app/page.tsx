@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Hero from "@/components/Hero";
+import VideoTour from "@/components/VideoTour";
 import Stats from "@/components/Stats";
 import VaidyaMode from "@/components/VaidyaMode";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import DemoModal from "@/components/DemoModal";
-import { SocialProofBar, PainPointsSection, TestimonialsSection, LeadSection } from "@/sections/LeadSections";
+import { SocialProofBar, PainPointsSection, LeadSection } from "@/sections/LeadSections";
 import FAQ from "@/components/FAQ";
 import ClientShowcase from "@/components/ClientShowcase";
 
@@ -20,12 +21,12 @@ export default function Home() {
       <Hero onOpenModal={openModal} />
 
       <SocialProofBar />
+      <VideoTour onOpenModal={openModal} />
       <ClientShowcase />
       <Stats />
       <VaidyaMode />
       <Features />
       <PainPointsSection />
-      {/* <TestimonialsSection /> */}
       <FAQ />
       <LeadSection onOpenModal={openModal} />
       <Footer />

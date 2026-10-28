@@ -3,7 +3,7 @@
 // ─── SocialProofBar ───────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "10,229+", label: "Patient Records" },
+  { value: "14,700+", label: "Patient Records" },
   { value: "13", label: "Modules" },
   { value: "36+", label: "Clinical Screens" },
   { value: "7", label: "Panchakarma Forms" },
@@ -70,7 +70,7 @@ export function PainPointsSection() {
         <div className="flex-1 w-full" style={{ maxWidth: "580px" }}>
           <h3 className="font-['Inter'] font-bold leading-[1.3] tracking-[0.35px] text-[#101828] mb-[16px] md:mb-[24px]"
               style={{ fontSize: "clamp(20px, 3.5vw, 38px)", wordBreak: "break-word" }}>
-            Generic HMS software wasn't built for Ayurveda
+            Generic HMS software wasn&apos;t built for Ayurveda
           </h3>
           <p className="font-['Inter'] font-normal leading-[1.65] tracking-[-0.45px] text-[#4A5565] mb-[24px]"
              style={{ fontSize: "clamp(14px, 1.8vw, 18px)" }}>
@@ -106,7 +106,7 @@ export function PainPointsSection() {
             <p className="font-['Inter'] font-semibold text-[13px] text-[#00A63E] uppercase tracking-widest">The Problem</p>
             <p className="font-['Hedvig_Letters_Serif'] font-normal text-[#101828]"
                style={{ fontSize: "clamp(18px, 2.8vw, 28px)", lineHeight: "1.4" }}>
-              Ayurvedic hospitals lose time and revenue every day to software that doesn't understand their workflows.
+              Ayurvedic hospitals lose time and revenue every day to software that doesn&apos;t understand their workflows.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-2">
               {[

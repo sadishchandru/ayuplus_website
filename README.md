@@ -16,9 +16,37 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Source lives under `src/` (pages in `src/app/`, components in `src/components/`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
+
+Copy the keys below into `.env.local` for local dev, and set the same keys in the Vercel dashboard for production. `.env.local` is gitignored and never ships — Vercel has its own copy. `NEXT_PUBLIC_*` is inlined at build time, so changing it needs a redeploy.
+
+```bash
+# Google reCAPTCHA v3 — https://www.google.com/recaptcha/admin
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=   # public, browser-exposed
+RECAPTCHA_SECRET_KEY=            # secret
+
+# Resend — demo-form emails
+RESEND_KEY=                      # starts re_
+LEADS_EMAIL=contact@ayuplus.in   # admin recipient
+
+# Groq — chat widget
+GROQ_KEY=                        # starts gsk_
+```
+
+For local dev, add `localhost` to the reCAPTCHA key's Domains list (admin console). reCAPTCHA v3 scores automated/headless traffic low, so only real human submits clear the 0.5 gate.
+
+## Deploy
+
+Work on `development`; deploy by merging into `production` (Vercel's Production Branch auto-deploys):
+
+```bash
+git checkout production && git merge development && git push origin production
+git checkout development && git push origin development
+```
+
+See [CLAUDE.md](CLAUDE.md) for the full architecture, API routes, and gotchas.
 
 ## Learn More
 
